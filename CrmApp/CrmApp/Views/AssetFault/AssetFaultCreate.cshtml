@@ -1,0 +1,33 @@
+﻿@model AssetFaultCreateViewModel
+
+<div class="card">
+    <div class="card-body">
+        <h4>Varlık'a Arıza Ata</h4>
+        <hr />
+        <p>@Model.AppUserName</p>
+        <hr/>
+
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-controller="AssetFault" asp-action="AssetFaultCreate">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="AssetId" class="control-label">Varlık</label>
+                        <select asp-for="AssetId" class="form-control" asp-items="ViewBag.AssetId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FaultsId" class="control-label">Atanacak Arıza</label>
+                        <select asp-for="FaultsId" class="form-control" asp-items="ViewBag.FaultsId"></select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Ata" class="btn btn-secondary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a class="btn btn-info" asp-controller="Asset" asp-action="AssetList">Varlık Listesine Dön</a>
+        </div>
+    </div>
+</div>

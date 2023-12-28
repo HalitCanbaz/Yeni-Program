@@ -1,0 +1,66 @@
+﻿@using CrmApp.Views.Shared.Components.AylikOranComponent;
+@model AylikOranViewModel
+
+
+<div class="container-fluid">
+    <div class="nk-content-inner">
+        <div class="nk-content-body">
+            <div class="nk-block">
+                <div class="row g-gs">
+                    <div class="col-xxl-3">
+                        <div class="nk-download">
+                            <div class="data">
+                                <div class="thumb"><img src="~/images/icons/product-pp.svg" alt=""></div>
+                                <div class="info">
+                                    @if (Model.TotalApproved == 0)
+                                    {
+                                        <h6 class="title"><span class="name">Hiç yeni iş yok </span></h6>
+
+                                    }
+                                    else
+                                    {
+                                        <h6 class="title"><span class="name">@Model.TotalApproved Yeni onaylanmış iş </span></h6>
+
+                                    }
+                                </div>
+                            </div>
+                        </div><!-- .sp-pdl-item -->
+                    </div>
+                    <div class="col-xxl-3">
+                        <div class="nk-download">
+                            <div class="data">
+                                <div class="thumb"><img src="~/images/icons/product-ee.svg" alt=""></div>
+                                <div class="info">
+                                    @if (Model.TotalWaiting == 0)
+                                    {
+                                        <h6 class="title"><span class="name">Onay bekleyen iş yok</span></h6>
+
+                                    }
+                                    else
+                                    {
+                                        <h6 class="title"><span class="name">@Model.TotalWaiting Adet onay bekleyen iş var </span></h6>
+
+                                    }
+                                </div>
+                            </div>
+                        </div><!-- .sp-pdl-item -->
+                    </div>
+                    <div class="col-xxl-3">
+                        <div class="nk-download">
+                            <div class="data">
+                                <div class="thumb"><img src="~/images/icons/product-cc.svg" alt=""></div>
+                                <div class="info">
+                                    <h6 class="title"><span class="name">Bu ay @Model.TotalFinished adet iş bitirdiniz </span></h6>
+                                </div>
+                            </div>
+                        </div><!-- .sp-pdl-item -->
+                    </div>
+                    <div class="alert alert-icon alert-primary" role="alert">
+                        <em class="icon ni ni-alert-circle"></em>
+                        <strong>Order has been placed</strong>. Your will be redirect for make your payment.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿@using CrmApp.Views.Shared.Components.WorkComponent;
+@model OnayBekleyenViewModel
+
+
+
+<div class="container-fluid">
+    <div class="nk-content-inner">
+        <div class="nk-content-body">
+            <div class="nk-block">
+                <div class="row g-gs">
+                    <div class="col-xxl-4">
+                        <div class="nk-download">
+                            <div class="data">
+                                <div class="thumb"><img src="~/images/icons/product-pp.svg" alt=""></div>
+                                <div class="info">
+                                    @if (Model.Total == 0)
+                                    {
+                                        <h6 class="title"><span class="name">Hiç yeni iş yok </span></h6>
+
+                                    }
+                                    else
+                                    {
+                                        <h6 class="title"><span class="name">@Model.Total  Yeni iş açıldı</span></h6>
+
+                                    }
+                                </div>
+                               
+                            </div>
+                            <div class="actions">
+                                <a asp-controller="Work" asp-action="WorkPendingApprovalList" class="btn btn-success">Onay Listesi</a>
+                            </div>
+                        </div><!-- .sp-pdl-item -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

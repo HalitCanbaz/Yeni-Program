@@ -1,0 +1,75 @@
+﻿@model WorkCreateViewModel
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper">
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-12 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">İş Atama sayfası</h4>
+                                <form asp-action="WorkCreate">
+                                    <p class="card-description"> Yeni İş ata </p>
+                                    @if (@TempData["message"] != null)
+                                    {
+                                        <div class="alert alert-icon alert-success" role="alert">
+                                            @TempData["message"]
+                                        </div>
+                                    }
+                                    @if (@TempData["timeMessage"] != null)
+                                    {
+                                        <div class="alert alert-icon alert-danger" role="alert">
+                                            @TempData["timeMessage"]
+                                        </div>
+                                    }
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group col-md-2">
+                                        <label class="control-label">Arıza Kategorisi</label>
+                                        <div class="form-control-wrap">
+                                            <select asp-for="AssetFaultId" class="form-select js-select2" data-search="on" asp-items="ViewBag.AssetFaultId"></select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label class="control-label">İş Açılacak Departman</label>
+                                        <div class="form-control-wrap">
+                                            <select asp-for="DepartmentId" class="form-select js-select2" data-search="on" asp-items="ViewBag.DepartmentId"></select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label class="control-label">Talep Edilen Tarih</label>
+                                        <input asp-for="DeadLine" class="form-control" />
+                                        <span asp-validation-for="DeadLine" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label class="control-label">Açılacak İşin Konusu</label>
+                                        <input asp-for="Title" class="form-control" placeholder="Maksimum 50 karakter uzunluğunda" />
+                                        <span asp-validation-for="Title" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Açılacak İşin Açıklaması</label>
+                                        <textarea asp-for="Description" class="form-control" rows="4" placeholder="Yapılacak işin detaylı açıklamasını bu alana giriniz maksimum 500 karakter uzunluğunda"></textarea>
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>
+                                                                 
+
+                                    <div class="form-group">
+                                        <input type="submit" value="Oluştur" class="btn btn-info" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
