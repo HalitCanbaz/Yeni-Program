@@ -1,10 +1,14 @@
 ﻿using CrmApp.Models;
 using CrmApp.Models.Entities;
 using CrmApp.ViewModel.DepartmentViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace CrmApp.Controllers
 {
+    [Authorize(Roles = "admin")]
+
     public class DepartmentController : Controller
     {
         private readonly CrmAppDbContext _context;

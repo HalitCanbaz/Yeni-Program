@@ -19,7 +19,7 @@
                                     }
                                     else
                                     {
-                                        <h6 class="title"><span class="name">@Model.TotalApproved Yeni onaylanmış iş </span></h6>
+                                        <h6 class="title"><span class="name"><a asp-controller="Work" asp-action="WorkPendingApprovalList">@Model.TotalApproved Yeni onaylanmış iş</a> </span></h6>
 
                                     }
                                 </div>
@@ -54,11 +54,7 @@
                                 </div>
                             </div>
                         </div><!-- .sp-pdl-item -->
-                    </div>
-                    <div class="alert alert-icon alert-primary" role="alert">
-                        <em class="icon ni ni-alert-circle"></em>
-                        <strong>Order has been placed</strong>. Your will be redirect for make your payment.
-                    </div>
+                    </div>                   
                 </div>
             </div>
         </div>

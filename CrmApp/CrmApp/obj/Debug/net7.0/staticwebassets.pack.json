@@ -1037,10 +1037,6 @@
       "PackagePath": "staticwebassets\\images\\email\\kyc-success.png"
     },
     {
-      "Id": "C:\\Users\\hcanbaz\\Desktop\\yeni program\\CrmApp\\CrmApp\\wwwroot\\images\\favicon.png",
-      "PackagePath": "staticwebassets\\images\\favicon.png"
-    },
-    {
       "Id": "C:\\Users\\hcanbaz\\Desktop\\yeni program\\CrmApp\\CrmApp\\wwwroot\\images\\flags\\arg.png",
       "PackagePath": "staticwebassets\\images\\flags\\arg.png"
     },
@@ -1491,38 +1487,6 @@
     {
       "Id": "C:\\Users\\hcanbaz\\Desktop\\yeni program\\CrmApp\\CrmApp\\wwwroot\\images\\lms\\theme\\f.jpg",
       "PackagePath": "staticwebassets\\images\\lms\\theme\\f.jpg"
-    },
-    {
-      "Id": "C:\\Users\\hcanbaz\\Desktop\\yeni program\\CrmApp\\CrmApp\\wwwroot\\images\\logo-dark-small.png",
-      "PackagePath": "staticwebassets\\images\\logo-dark-small.png"
-    },
-    {
-      "Id": "C:\\Users\\hcanbaz\\Desktop\\yeni program\\CrmApp\\CrmApp\\wwwroot\\images\\logo-dark-small2x.png",
-      "PackagePath": "staticwebassets\\images\\logo-dark-small2x.png"
-    },
-    {
-      "Id": "C:\\Users\\hcanbaz\\Desktop\\yeni program\\CrmApp\\CrmApp\\wwwroot\\images\\logo-dark.png",
-      "PackagePath": "staticwebassets\\images\\logo-dark.png"
-    },
-    {
-      "Id": "C:\\Users\\hcanbaz\\Desktop\\yeni program\\CrmApp\\CrmApp\\wwwroot\\images\\logo-dark2x.png",
-      "PackagePath": "staticwebassets\\images\\logo-dark2x.png"
-    },
-    {
-      "Id": "C:\\Users\\hcanbaz\\Desktop\\yeni program\\CrmApp\\CrmApp\\wwwroot\\images\\logo-small.png",
-      "PackagePath": "staticwebassets\\images\\logo-small.png"
-    },
-    {
-      "Id": "C:\\Users\\hcanbaz\\Desktop\\yeni program\\CrmApp\\CrmApp\\wwwroot\\images\\logo-small2x.png",
-      "PackagePath": "staticwebassets\\images\\logo-small2x.png"
-    },
-    {
-      "Id": "C:\\Users\\hcanbaz\\Desktop\\yeni program\\CrmApp\\CrmApp\\wwwroot\\images\\logo.png",
-      "PackagePath": "staticwebassets\\images\\logo.png"
-    },
-    {
-      "Id": "C:\\Users\\hcanbaz\\Desktop\\yeni program\\CrmApp\\CrmApp\\wwwroot\\images\\logo2x.png",
-      "PackagePath": "staticwebassets\\images\\logo2x.png"
     },
     {
       "Id": "C:\\Users\\hcanbaz\\Desktop\\yeni program\\CrmApp\\CrmApp\\wwwroot\\images\\product\\a.png",

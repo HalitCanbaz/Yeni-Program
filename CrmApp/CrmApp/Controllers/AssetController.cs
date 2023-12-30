@@ -1,11 +1,15 @@
 ﻿using CrmApp.Models;
 using CrmApp.Models.Entities;
 using CrmApp.ViewModel.AssetViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Data;
 
 namespace CrmApp.Controllers
 {
+    [Authorize(Roles = "admin, varlık")]
+
     public class AssetController : Controller
     {
         private readonly CrmAppDbContext _context;
@@ -78,12 +82,35 @@ namespace CrmApp.Controllers
                 AssetCategoryName = x.AssetCategories.Name,
                 AssetTypneName = x.AssetTypes.Name,
                 AppUser = x.Users.NameSurName,
-                AppUserId= x.Users.Id,
+                AppUserId = x.Users.Id,
 
             }).ToList();
 
 
             return View(listOfAsset);
         }
+
+        public IActionResult AssetUserList(int Id)
+        {
+            var result = _context.Assets.Where(x => x.AppUserId == Id).ToList();
+            var user = _context.Users.Where(x=> x.Id == Id).FirstOrDefault();    
+
+            var listOfAssetUser = result.Select(x => new AssetListViewModel()
+            {
+                Id = x.Id,
+                Code = x.Code,
+                Name = x.Name,
+                Description = x.Description,
+                AssetCategoryName = x.Name,
+                AssetTypneName = x.Name,
+                AppUser = user.NameSurName,
+                AppUserId = x.Id,
+
+            }).ToList();
+
+
+            return View(listOfAssetUser);
+        }
+
     }
 }

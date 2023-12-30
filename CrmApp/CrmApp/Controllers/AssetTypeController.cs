@@ -2,10 +2,14 @@
 using CrmApp.Models.Entities;
 using CrmApp.ViewModel.AssetTypeViewModels;
 using CrmApp.ViewModel.FaultViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace CrmApp.Controllers
 {
+    [Authorize(Roles = "admin")]
+
     public class AssetTypeController : Controller
     {
         private readonly CrmAppDbContext _context;

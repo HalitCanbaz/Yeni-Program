@@ -1,0 +1,181 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = CrmApp
+build_property.RootNamespace = CrmApp
+build_property.ProjectDir = C:\Users\hcanbaz\Desktop\yeni program\CrmApp\CrmApp\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\hcanbaz\Desktop\yeni program\CrmApp\CrmApp
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/AssetCategory/AssetCategoryCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRDYXRlZ29yeVxBc3NldENhdGVnb3J5Q3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/AssetCategory/AssetCategoryList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRDYXRlZ29yeVxBc3NldENhdGVnb3J5TGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/AssetFault/AssetFaultCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRGYXVsdFxBc3NldEZhdWx0Q3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/AssetFault/AssetFaultList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRGYXVsdFxBc3NldEZhdWx0TGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/AssetFault/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRGYXVsdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/AssetType/AssetTypeCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRUeXBlXEFzc2V0VHlwZUNyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/AssetType/AssetTypeList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRUeXBlXEFzc2V0VHlwZUxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Asset/AssetCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRcQXNzZXRDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Asset/AssetList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRcQXNzZXRMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Department/DepartmentCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxEZXBhcnRtZW50Q3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Department/DepartmentList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxEZXBhcnRtZW50TGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Fault/FaultCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmF1bHRcRmF1bHRDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Fault/FaultList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmF1bHRcRmF1bHRMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Shared/Components/AylikOranComponent/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQXlsaWtPcmFuQ29tcG9uZW50XERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Shared/Components/OnayBekleyenComponent/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcT25heUJla2xleWVuQ29tcG9uZW50XERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Shared/Components/UserPictureComponent/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVXNlclBpY3R1cmVDb21wb25lbnRcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Shared/_HeaderNamePartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXJOYW1lUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/TaskCategory/TaskCategoryCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza0NhdGVnb3J5XFRhc2tDYXRlZ29yeUNyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/TaskCategory/TaskCategoryList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza0NhdGVnb3J5XFRhc2tDYXRlZ29yeUxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/User/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/User/ForgetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxGb3JnZXRQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/User/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxSZXNldFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/User/SignIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTaWduSW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/User/SignUp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTaWduVXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/User/UserApprovedList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyQXBwcm92ZWRMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/User/UserDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/User/UserEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/User/UserList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Work/MyWorks.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya1xNeVdvcmtzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Work/TaskCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya1xUYXNrQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Work/WorkCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya1xXb3JrQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Work/WorkDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya1xXb3JrRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Work/WorkPendingApprovalList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya1xXb3JrUGVuZGluZ0FwcHJvdmFsTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Work/WorkStatusApprovalDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya1xXb3JrU3RhdHVzQXBwcm92YWxEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-apkvukh61d

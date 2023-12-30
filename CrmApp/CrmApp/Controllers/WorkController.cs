@@ -2,10 +2,12 @@
 using CrmApp.Models.Entities;
 using CrmApp.ViewModel.AssetFaultViewModels;
 using CrmApp.ViewModel.WorkViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace CrmApp.Controllers
 {
@@ -22,7 +24,7 @@ namespace CrmApp.Controllers
             _SignInManager = signInManager;
         }
 
-
+        [Authorize]
         public async Task<IActionResult> WorkCreate()
         {
             #region include
@@ -50,7 +52,7 @@ namespace CrmApp.Controllers
 
             return View();
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> WorkCreate(WorkCreateViewModel model)
         {
@@ -136,6 +138,7 @@ namespace CrmApp.Controllers
             return RedirectToAction(nameof(WorkController.WorkCreate));
         }
 
+        [Authorize(Roles = "admin, sorumlu, user, müdür")]
         public async Task<IActionResult> TaskCreate()
         {
             ViewData["AppUserId"] = new SelectList(_context.Users, "Id", "NameSurName");
@@ -143,6 +146,8 @@ namespace CrmApp.Controllers
 
             return View();
         }
+
+        [Authorize(Roles = "admin, sorumlu, user, müdür")]
 
         [HttpPost]
         public async Task<IActionResult> TaskCreate(WorkCreateViewModel model)
@@ -231,6 +236,8 @@ namespace CrmApp.Controllers
             return RedirectToAction(nameof(WorkController.WorkCreate));
         }
 
+        [Authorize(Roles = "admin, müdür")]
+
         public async Task<IActionResult> WorkPendingApprovalList(int Id)
         {
             var worksList = await _context.Works.ToListAsync();
@@ -252,6 +259,7 @@ namespace CrmApp.Controllers
             return View(worksListViewModel);
         }
 
+        [Authorize(Roles = "admin, sorumlu, user, müdür")]
 
         public async Task<IActionResult> WorkStatusApprovalDetail(int Id)
         {
@@ -291,6 +299,8 @@ namespace CrmApp.Controllers
             return View(details);
         }
 
+        [Authorize(Roles = "admin, sorumlu, user, müdür")]
+
         [HttpPost]
         public async Task<IActionResult> WorkStatusApprovalDetail(int Id, WorkPendingApprovalDetailViewModel model)
         {
@@ -320,6 +330,7 @@ namespace CrmApp.Controllers
             return RedirectToAction(nameof(WorkController.WorkPendingApprovalList));
         }
 
+        [Authorize(Roles = "admin, sorumlu, user, müdür")]
 
         public async Task<IActionResult> WorkDetail(int Id)
         {
@@ -349,6 +360,7 @@ namespace CrmApp.Controllers
             return View(details);
         }
 
+        [Authorize(Roles = "admin, sorumlu, user, müdür")]
 
         public async Task<IActionResult> MyWorks()
         {
@@ -371,6 +383,7 @@ namespace CrmApp.Controllers
             return View(worksListViewModel);
         }
 
+        [Authorize(Roles = "admin, sorumlu, user, müdür")]
 
         [HttpPost]
         public async Task<IActionResult> WorksStatusStarted(int id)
@@ -387,11 +400,13 @@ namespace CrmApp.Controllers
             return RedirectToAction(nameof(WorkController.MyWorks));
         }
 
+        [Authorize(Roles = "admin, sorumlu, user, müdür")]
 
         public async Task<IActionResult> WorkStatusFinished()
         {
             return View();
         }
+        [Authorize(Roles = "admin, sorumlu, user, müdür")]
 
 
         [HttpPost]

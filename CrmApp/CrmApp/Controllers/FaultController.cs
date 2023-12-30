@@ -1,10 +1,14 @@
 ﻿using CrmApp.Models;
 using CrmApp.Models.Entities;
 using CrmApp.ViewModel.FaultViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace CrmApp.Controllers
 {
+    [Authorize(Roles = "admin")]
+
     public class FaultController : Controller
     {
         private readonly CrmAppDbContext _context;

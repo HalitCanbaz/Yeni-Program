@@ -2,6 +2,7 @@
 using CrmApp.Models.Entities;
 using CrmApp.Services;
 using CrmApp.ViewModel.UserViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -76,6 +77,7 @@ namespace CrmApp.Controllers
             return View();
         }
 
+        [Authorize(Roles = "admin")]
 
         public async Task<IActionResult> UserApprovedList(int id)
         {
@@ -102,6 +104,7 @@ namespace CrmApp.Controllers
         }
 
         //burada kaldın kullanıcı onay sayfası yapıyorsun         
+        [Authorize(Roles = "admin")]
 
         public async Task<IActionResult> UserApproved()
         {
@@ -109,6 +112,7 @@ namespace CrmApp.Controllers
         }
 
 
+        [Authorize(Roles = "admin")]
 
         [HttpPost]
         public async Task<IActionResult> UserApproved(int id, UserApprovedListViewModel model)
@@ -127,6 +131,7 @@ namespace CrmApp.Controllers
 
         }
 
+        [Authorize(Roles = "admin")]
 
         public async Task<IActionResult> UserReject()
         {
@@ -134,6 +139,7 @@ namespace CrmApp.Controllers
             return View();
 
         }
+        [Authorize(Roles = "admin")]
 
         [HttpPost]
         public async Task<IActionResult> UserReject(int id, UserApprovedListViewModel model)
@@ -204,12 +210,14 @@ namespace CrmApp.Controllers
 
             return View();
         }
+        [Authorize]
 
         public async Task<IActionResult> Logout()
         {
             await _SignInManager.SignOutAsync();
             return RedirectToAction(nameof(UserController.SignIn));
         }
+        [Authorize]
 
         public async Task<IActionResult> UserDetails()
         {
@@ -227,6 +235,7 @@ namespace CrmApp.Controllers
             return View(userEditViewModel);
         }
 
+        [Authorize(Roles = "admin")]
 
         public async Task<IActionResult> UserList()
         {
@@ -251,6 +260,7 @@ namespace CrmApp.Controllers
         }
 
 
+        [Authorize]
 
         public async Task<IActionResult> UserEdit()
         {
@@ -273,6 +283,7 @@ namespace CrmApp.Controllers
 
             return View(userEditViewModel);
         }
+        [Authorize]
 
         [HttpPost]
         public async Task<IActionResult> UserEdit(UserEditViewModel model)
@@ -331,11 +342,13 @@ namespace CrmApp.Controllers
 
 
 
+        [Authorize]
 
         public IActionResult ChangePassword()
         {
             return View();
         }
+        [Authorize]
 
         [HttpPost]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)

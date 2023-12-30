@@ -2,10 +2,14 @@
 using CrmApp.Models;
 using CrmApp.Models.Entities;
 using CrmApp.ViewModel.TaskCategoryViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace CrmApp.Controllers
 {
+    [Authorize(Roles = "admin")]
+
     public class TaskCategoryController : Controller
     {
         private readonly CrmAppDbContext _context;
