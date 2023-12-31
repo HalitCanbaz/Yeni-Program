@@ -138,8 +138,7 @@ namespace CrmApp.Controllers
             return RedirectToAction(nameof(WorkController.WorkCreate));
         }
 
-        [Authorize(Roles = "admin")]
-        [Authorize(Roles = "görev oluştur")]
+        [Authorize(Roles = "admin, görev oluştur")]
 
 
 
@@ -151,8 +150,7 @@ namespace CrmApp.Controllers
             return View();
         }
 
-        [Authorize(Roles = "admin")]
-        [Authorize(Roles = "görev oluştur")]
+        [Authorize(Roles = "admin, görev oluştur")]
 
 
         [HttpPost]
@@ -242,8 +240,7 @@ namespace CrmApp.Controllers
             return RedirectToAction(nameof(WorkController.WorkCreate));
         }
 
-        [Authorize(Roles = "admin")]
-        [Authorize(Roles = "görev onay")]
+        [Authorize(Roles = "admin, görev onay")]
 
         public async Task<IActionResult> WorkPendingApprovalList(int Id)
         {
@@ -266,8 +263,7 @@ namespace CrmApp.Controllers
             return View(worksListViewModel);
         }
 
-        [Authorize(Roles = "admin")]
-        [Authorize(Roles = "görev onay")]
+        [Authorize(Roles = "admin, görev onay")]
 
         public async Task<IActionResult> WorkStatusApprovalDetail(int Id)
         {
@@ -307,8 +303,7 @@ namespace CrmApp.Controllers
             return View(details);
         }
 
-        [Authorize(Roles = "admin")]
-        [Authorize(Roles = "görev onay")]
+        [Authorize(Roles = "admin, görev onay")]
 
         [HttpPost]
         public async Task<IActionResult> WorkStatusApprovalDetail(int Id, WorkPendingApprovalDetailViewModel model)
