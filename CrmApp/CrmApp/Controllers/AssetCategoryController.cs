@@ -9,6 +9,7 @@ using System.Data;
 namespace CrmApp.Controllers
 {
     [Authorize(Roles = "admin")]
+    [Authorize(Roles = "varlık kategori")]
 
     public class AssetCategoryController : Controller
     {

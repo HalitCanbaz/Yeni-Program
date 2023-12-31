@@ -28,7 +28,7 @@ namespace CrmApp.Controllers
                 Id = x.Id,
                 RoleName = x.Name
 
-            }).ToList();
+            }).OrderBy(x=> x.RoleName).ToList();
             return View(roleListViewModel);
         }
 

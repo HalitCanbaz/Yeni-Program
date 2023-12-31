@@ -13,11 +13,11 @@
 <html lang="zxx" class="js">
 
 <head>
-    <base href=".~/.~/.~/">
+    <base href=".~/">
     <meta charset="utf-8">
-    <meta name="author" content="Softnio">
+    <meta name="author" content="Halit-Canbaz">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers.">
+    <meta name="description" content="İş ve Proje Takip Uygulaması">
     @*logo gelecek*@
     <link rel="shortcut icon" href="">
     <title>Yeni Kayıt</title>
@@ -52,6 +52,12 @@
                                 {
                                     <div class="alert alert-icon alert-success" role="alert">
                                         @TempData["message"]
+                                    </div>
+                                }
+                                @if (TempData["messageError"] != null)
+                                {
+                                    <div class="alert alert-icon alert-danger" role="alert">
+                                        @TempData["messageError"]
                                     </div>
                                 }
                                 <form asp-controller="User" asp-action="SignUp" method="post">

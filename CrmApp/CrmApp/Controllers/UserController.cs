@@ -51,6 +51,15 @@ namespace CrmApp.Controllers
                 return View();
 
             }
+
+            var mail = _context.Users.Where(x => x.Email == model.Email).FirstOrDefault();
+            if (mail != null)
+            {
+                TempData["messageError"] = "Bu mail ile daha önce hesap açılmış. Bir mail ile sadece bir hesap oluşturulabilir.";
+                return View();
+            }
+
+
             var result = await _UserManager.CreateAsync(new()
             {
                 UserName = model.UserName,
@@ -103,7 +112,6 @@ namespace CrmApp.Controllers
 
         }
 
-        //burada kaldın kullanıcı onay sayfası yapıyorsun         
         [Authorize(Roles = "admin")]
 
         public async Task<IActionResult> UserApproved()

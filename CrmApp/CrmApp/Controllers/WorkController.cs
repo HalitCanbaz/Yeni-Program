@@ -138,7 +138,11 @@ namespace CrmApp.Controllers
             return RedirectToAction(nameof(WorkController.WorkCreate));
         }
 
-        [Authorize(Roles = "admin, sorumlu, user, müdür")]
+        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "görev oluştur")]
+
+
+
         public async Task<IActionResult> TaskCreate()
         {
             ViewData["AppUserId"] = new SelectList(_context.Users, "Id", "NameSurName");
@@ -147,7 +151,9 @@ namespace CrmApp.Controllers
             return View();
         }
 
-        [Authorize(Roles = "admin, sorumlu, user, müdür")]
+        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "görev oluştur")]
+
 
         [HttpPost]
         public async Task<IActionResult> TaskCreate(WorkCreateViewModel model)
@@ -209,7 +215,7 @@ namespace CrmApp.Controllers
             { Departman = x, Users = y }).Where(x => x.Users.Id == model.AppUserId).FirstOrDefault();
 
 
-            var assetFaultId = _context.AssetFaults.Where(x => x.Name.Contains("proje")).FirstOrDefault();
+            var assetFaultId = _context.AssetFaults.Where(x => x.Name.Contains("görev")).FirstOrDefault();
             var appUserId = _context.Users.Where(x => x.UserName.Contains("destek")).FirstOrDefault();
 
             var result = new Work()
@@ -236,7 +242,8 @@ namespace CrmApp.Controllers
             return RedirectToAction(nameof(WorkController.WorkCreate));
         }
 
-        [Authorize(Roles = "admin, müdür")]
+        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "görev onay")]
 
         public async Task<IActionResult> WorkPendingApprovalList(int Id)
         {
@@ -259,7 +266,8 @@ namespace CrmApp.Controllers
             return View(worksListViewModel);
         }
 
-        [Authorize(Roles = "admin, sorumlu, user, müdür")]
+        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "görev onay")]
 
         public async Task<IActionResult> WorkStatusApprovalDetail(int Id)
         {
@@ -299,7 +307,8 @@ namespace CrmApp.Controllers
             return View(details);
         }
 
-        [Authorize(Roles = "admin, sorumlu, user, müdür")]
+        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "görev onay")]
 
         [HttpPost]
         public async Task<IActionResult> WorkStatusApprovalDetail(int Id, WorkPendingApprovalDetailViewModel model)
@@ -330,7 +339,7 @@ namespace CrmApp.Controllers
             return RedirectToAction(nameof(WorkController.WorkPendingApprovalList));
         }
 
-        [Authorize(Roles = "admin, sorumlu, user, müdür")]
+        [Authorize]
 
         public async Task<IActionResult> WorkDetail(int Id)
         {
@@ -360,7 +369,7 @@ namespace CrmApp.Controllers
             return View(details);
         }
 
-        [Authorize(Roles = "admin, sorumlu, user, müdür")]
+        [Authorize]
 
         public async Task<IActionResult> MyWorks()
         {
@@ -383,7 +392,7 @@ namespace CrmApp.Controllers
             return View(worksListViewModel);
         }
 
-        [Authorize(Roles = "admin, sorumlu, user, müdür")]
+        [Authorize]
 
         [HttpPost]
         public async Task<IActionResult> WorksStatusStarted(int id)
@@ -400,14 +409,14 @@ namespace CrmApp.Controllers
             return RedirectToAction(nameof(WorkController.MyWorks));
         }
 
-        [Authorize(Roles = "admin, sorumlu, user, müdür")]
+        [Authorize]
 
         public async Task<IActionResult> WorkStatusFinished()
         {
             return View();
         }
-        [Authorize(Roles = "admin, sorumlu, user, müdür")]
 
+        [Authorize]
 
         [HttpPost]
         public async Task<IActionResult> WorkStatusFinished(int id, WorkStatusFinishedViewModel model)
@@ -426,8 +435,28 @@ namespace CrmApp.Controllers
         }
 
 
+        [Authorize]
+
+        public async Task<IActionResult> MyOpenedWorks()
+        {
+            var worksList = await _context.Works.ToListAsync();
+
+            var userControl = await _UserManager.FindByNameAsync(User.Identity.Name);
+
+            var worksListViewModel = worksList.Where(x => x.AppUserId == userControl.Id).Select(x => new MyWorksViewModel()
+            {
+                Id = x.Id,
+                Title = x.Title,
+                Create = x.Create,
+                DeadLine = x.DeadLine,
+                WhoIsCreate = x.WhoIsCreate,
+                Status = x.Status,
+                WorkOrderNumber = x.WorkOrderNumber
 
 
+            }).OrderByDescending(x => x.Id).ToList();
+            return View(worksListViewModel);
+        }
 
 
     }

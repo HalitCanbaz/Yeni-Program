@@ -8,8 +8,8 @@ using System.Data;
 
 namespace CrmApp.Controllers
 {
-    [Authorize(Roles = "admin, varlık")]
-
+    [Authorize(Roles = "varlık")]
+    [Authorize(Roles = "admin")]
     public class AssetController : Controller
     {
         private readonly CrmAppDbContext _context;
@@ -48,7 +48,7 @@ namespace CrmApp.Controllers
             Asset asset = new Asset()
             {
                 Code = model.Code,
-                Name = model.Name,
+                Name = model.Name.ToUpper(),
                 Description = model.Description,
                 AssetCategoryId = model.AssetCategoryId,
                 AssetTypeId = model.AssetTypeId,

@@ -1,15 +1,20 @@
 ﻿<div>
     <div>
-        <div>
-            @await Component.InvokeAsync("OnayBekleyenComponent")
-        </div>
+        @if (User.IsInRole("admin") || User.IsInRole("gorev onay"))
+        {
+            <div>
+                @await Component.InvokeAsync("OnayBekleyenComponent")
+            </div>
+        }
+
         <div>
             <hr />
         </div>
+
         <div>
             @await Component.InvokeAsync("AylikOranComponent")
-        </div>       
-    </div>   
+        </div>
+    </div>
 </div>
 
 

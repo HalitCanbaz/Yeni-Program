@@ -30,9 +30,9 @@ namespace CrmApp.Views.Shared.Components.AylikOranComponent
 
             var resultFinished = await _context.Works.Where(x => x.AppUserId == user.Id).CountAsync(x => x.Status == "bitti" && x.Finished >= startOfMonth && x.Finished <= endOfMonth);
 
-            var resultWaiting = await _context.Works.Where(x => x.AppUserId == user.Id).CountAsync(x => x.Status == "beklemede" && x.Create >= startOfMonth && x.Create <= endOfMonth);
+            var resultWaiting = await _context.Works.Where(x => x.AppUserId == user.Id).CountAsync(x => x.Status == "beklemede" );
 
-            var resultApproved = await _context.Works.Where(x => x.AppUserId == user.Id).CountAsync(x => x.Status == "onaylandı" && x.Create >= startOfMonth && x.Create <= endOfMonth);
+            var resultApproved = await _context.Works.Where(x => x.AppUserId == user.Id).CountAsync(x => x.Status == "onaylandı");
 
             AylikOranViewModel model = new AylikOranViewModel();
 

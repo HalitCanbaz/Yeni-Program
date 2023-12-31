@@ -80,6 +80,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Role/AssignRoleToUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxBc3NpZ25Sb2xlVG9Vc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Role/CreateRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxDcmVhdGVSb2xlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Role/RoleList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxSb2xlTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Role/RoleUpdate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxSb2xlVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Shared/Components/AylikOranComponent/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQXlsaWtPcmFuQ29tcG9uZW50XERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -146,6 +162,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/User/UserList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Work/MyOpenedWorks.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya1xNeU9wZW5lZFdvcmtzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Work/MyWorks.cshtml]

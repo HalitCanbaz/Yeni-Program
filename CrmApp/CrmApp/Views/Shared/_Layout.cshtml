@@ -67,14 +67,27 @@
                                         <li class="nk-menu-item">
                                             <a asp-controller="Work" asp-action="WorkCreate" class="nk-menu-link"><span class="nk-menu-text">Yeni İş Oluştur</span></a>
                                         </li>
-                                        <li class="nk-menu-item">
-                                            <a asp-controller="Work" asp-action="TaskCreate" class="nk-menu-link"><span class="nk-menu-text">Yeni Görev Oluştur</span></a>
-                                        </li>
-                                        <li class="nk-menu-item">
-                                            <a asp-controller="Work" asp-action="WorkPendingApprovalList" class="nk-menu-link"><span class="nk-menu-text">Onay Bekleyenler</span></a>
-                                        </li>                                        
+                                        @if (User.IsInRole("admin") || User.IsInRole("görev oluştur"))
+                                        {
+                                            <li class="nk-menu-item">
+                                                <a asp-controller="Work" asp-action="TaskCreate" class="nk-menu-link"><span class="nk-menu-text">Yeni Görev Oluştur</span></a>
+                                            </li>
+                                        }
+
+
+                                        @if (User.IsInRole("admin") || User.IsInRole("gorev onay"))
+                                        {
+                                            <li class="nk-menu-item">
+                                                <a asp-controller="Work" asp-action="WorkPendingApprovalList" class="nk-menu-link"><span class="nk-menu-text">Onay Bekleyenler</span></a>
+                                            </li>
+                                        }
+
+
                                         <li class="nk-menu-item">
                                             <a asp-controller="Work" asp-action="MyWorks" class="nk-menu-link"><span class="nk-menu-text">Bana Açılan İşler</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a asp-controller="Work" asp-action="MyOpenedWorks" class="nk-menu-link"><span class="nk-menu-text">Açtığım İşler</span></a>
                                         </li>
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
@@ -108,142 +121,180 @@
                                         <span class="nk-menu-text">Duyurular</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
-                               
-                                <li class="nk-menu-item has-sub">
-                                    <a href="#" class="nk-menu-link nk-menu-toggle">
-                                        <span class="nk-menu-icon">
-                                            <em class="icon ni ni-setting"></em>
-                                        </span>
-                                        <span class="nk-menu-text">Ayarlar / Tanımlar</span>
-                                    </a>
+                                @if (User.IsInRole("admin") || User.IsInRole("varlık"))
+                                {
+                                    <li class="nk-menu-item has-sub">
+                                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                                            <span class="nk-menu-icon">
+                                                <em class="icon ni ni-setting"></em>
+                                            </span>
+                                            <span class="nk-menu-text">Ayarlar / Tanımlar</span>
+                                        </a>
 
-                                    <ul class="nk-menu-sub">
-                                        <li class="nk-menu-item has-sub">
-                                            <a href="#" class="nk-menu-link nk-menu-toggle">
-                                                <span class="nk-menu-icon"><em class="icon ni ni-user-list"></em></span>
-                                                <span class="nk-menu-text">Kullanıcı Tanım</span>
-                                            </a>
-                                            <ul class="nk-menu-sub">
-                                                <li class="nk-menu-item">
-                                                    <a asp-controller="User" asp-action="UserList" class="nk-menu-link"><span class="nk-menu-text">Kullanıcı Listesi</span></a>
-                                                </li>
-                                                <li class="nk-menu-item">
-                                                    <a asp-controller="User" asp-action="UserApprovedList" class="nk-menu-link"><span class="nk-menu-text">Onaylanacak Kullanıcılar</span></a>
-                                                </li>
-                                            </ul><!-- .nk-menu-sub -->
-                                        </li><!-- .nk-menu-item -->
+                                        <ul class="nk-menu-sub">
 
-                                        <li class="nk-menu-item has-sub">
-                                            <a href="#" class="nk-menu-link nk-menu-toggle">
-                                                <span class="nk-menu-icon"><em class="icon ni ni-masonry-fill"></em></span>
-                                                <span class="nk-menu-text">Varlık Tanım</span>
-                                            </a>
-                                            <ul class="nk-menu-sub">
-                                                <li class="nk-menu-item">
-                                                    <a asp-controller="Asset" asp-action="AssetCreate" class="nk-menu-link"><span class="nk-menu-text">Varlık Oluştur</span></a>
-                                                </li>
-                                                <li class="nk-menu-item">
-                                                    <a asp-controller="Asset" asp-action="AssetList" class="nk-menu-link"><span class="nk-menu-text">Varlık Listesi</span></a>
+                                            @if (User.IsInRole("admin"))
+                                            {
+                                                <li class="nk-menu-item has-sub">
+                                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                                        <span class="nk-menu-icon"><em class="icon ni ni-user-list"></em></span>
+                                                        <span class="nk-menu-text">Kullanıcı Tanım</span>
+                                                    </a>
+                                                    <ul class="nk-menu-sub">
+                                                        <li class="nk-menu-item">
+                                                            <a asp-controller="User" asp-action="UserList" class="nk-menu-link"><span class="nk-menu-text">Kullanıcı Listesi</span></a>
+                                                        </li>
+                                                        <li class="nk-menu-item">
+                                                            <a asp-controller="User" asp-action="UserApprovedList" class="nk-menu-link"><span class="nk-menu-text">Onaylanacak Kullanıcılar</span></a>
+                                                        </li>
+                                                    </ul>
                                                 </li>
 
-                                            </ul><!-- .nk-menu-sub -->
-                                        </li><!-- .nk-menu-item -->
-                                        <li class="nk-menu-item has-sub">
-                                            <a href="#" class="nk-menu-link nk-menu-toggle">
-                                                <span class="nk-menu-icon"><em class="icon ni ni-tranx"></em></span>
-                                                <span class="nk-menu-text">Varlık Tipi Tanım</span>
-                                            </a>
-                                            <ul class="nk-menu-sub">
-                                                <li class="nk-menu-item">
-                                                    <a asp-controller="AssetType" asp-action="AssetTypeCreate" class="nk-menu-link"><span class="nk-menu-text">Varlık Tipi Oluştur</span></a>
-                                                </li>
-                                                <li class="nk-menu-item">
-                                                    <a asp-controller="AssetType" asp-action="AssetTypeList" class="nk-menu-link"><span class="nk-menu-text">Varlık Tip Listesi</span></a>
+                                            }
+
+                                            @if (User.IsInRole("admin") || User.IsInRole("varlık"))
+                                            {
+                                                <li class="nk-menu-item has-sub">
+                                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                                        <span class="nk-menu-icon"><em class="icon ni ni-masonry-fill"></em></span>
+                                                        <span class="nk-menu-text">Varlık Tanım</span>
+                                                    </a>
+                                                    <ul class="nk-menu-sub">
+                                                        <li class="nk-menu-item">
+                                                            <a asp-controller="Asset" asp-action="AssetCreate" class="nk-menu-link"><span class="nk-menu-text">Varlık Oluştur</span></a>
+                                                        </li>
+                                                        <li class="nk-menu-item">
+                                                            <a asp-controller="Asset" asp-action="AssetList" class="nk-menu-link"><span class="nk-menu-text">Varlık Listesi</span></a>
+                                                        </li>
+                                                    </ul>
                                                 </li>
 
-                                            </ul><!-- .nk-menu-sub -->
-                                        </li><!-- .nk-menu-item -->
-                                        <li class="nk-menu-item has-sub">
-                                            <a href="#" class="nk-menu-link nk-menu-toggle">
-                                                <span class="nk-menu-icon"> <em class="icon ni ni-layers-fill"></em></span>
-                                                <span class="nk-menu-text">Varlık Kategori Tanım</span>
-                                            </a>
-                                            <ul class="nk-menu-sub">
-                                                <li class="nk-menu-item">
-                                                    <a asp-controller="AssetCategory" asp-action="AssetCategoryCreate" class="nk-menu-link"><span class="nk-menu-text">Varlık Kategorisi Oluştur</span></a>
+                                            }
+
+                                            @if (User.IsInRole("admin"))
+                                            {
+                                                <li class="nk-menu-item has-sub">
+                                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                                        <span class="nk-menu-icon"><em class="icon ni ni-tranx"></em></span>
+                                                        <span class="nk-menu-text">Varlık Tipi Tanım</span>
+                                                    </a>
+                                                    <ul class="nk-menu-sub">
+                                                        <li class="nk-menu-item">
+                                                            <a asp-controller="AssetType" asp-action="AssetTypeCreate" class="nk-menu-link"><span class="nk-menu-text">Varlık Tipi Oluştur</span></a>
+                                                        </li>
+                                                        <li class="nk-menu-item">
+                                                            <a asp-controller="AssetType" asp-action="AssetTypeList" class="nk-menu-link"><span class="nk-menu-text">Varlık Tip Listesi</span></a>
+                                                        </li>
+
+                                                    </ul>
                                                 </li>
-                                                <li class="nk-menu-item">
-                                                    <a asp-controller="AssetCategory" asp-action="AssetCategoryList" class="nk-menu-link"><span class="nk-menu-text">Varlık Kategori Listesi</span></a>
+                                            }
+
+
+                                            @if (User.IsInRole("admin") || User.IsInRole("varlık kategori"))
+                                            {
+                                                <li class="nk-menu-item has-sub">
+                                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                                        <span class="nk-menu-icon"> <em class="icon ni ni-layers-fill"></em></span>
+                                                        <span class="nk-menu-text">Varlık Kategori Tanım</span>
+                                                    </a>
+                                                    <ul class="nk-menu-sub">
+                                                        <li class="nk-menu-item">
+                                                            <a asp-controller="AssetCategory" asp-action="AssetCategoryCreate" class="nk-menu-link"><span class="nk-menu-text">Varlık Kategorisi Oluştur</span></a>
+                                                        </li>
+                                                        <li class="nk-menu-item">
+                                                            <a asp-controller="AssetCategory" asp-action="AssetCategoryList" class="nk-menu-link"><span class="nk-menu-text">Varlık Kategori Listesi</span></a>
+                                                        </li>
+                                                    </ul>
                                                 </li>
-                                            </ul>
-                                        </li>
-                                        <li class="nk-menu-item has-sub">
-                                            <a href="#" class="nk-menu-link nk-menu-toggle">
-                                                <span class="nk-menu-icon"><em class="icon ni ni-yelp"></em></span>
-                                                <span class="nk-menu-text">Arıza Tanım</span>
-                                            </a>
-                                            <ul class="nk-menu-sub">
-                                                <li class="nk-menu-item">
-                                                    <a asp-controller="Fault" asp-action="FaultCreate" class="nk-menu-link"><span class="nk-menu-text">Arıza Oluştur</span></a>
+                                            }
+
+                                            @if (User.IsInRole("admin") || User.IsInRole("varlık arıza"))
+                                            {
+                                                <li class="nk-menu-item has-sub">
+                                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                                        <span class="nk-menu-icon"><em class="icon ni ni-yelp"></em></span>
+                                                        <span class="nk-menu-text">Arıza Tanım</span>
+                                                    </a>
+                                                    <ul class="nk-menu-sub">
+                                                        <li class="nk-menu-item">
+                                                            <a asp-controller="Fault" asp-action="FaultCreate" class="nk-menu-link"><span class="nk-menu-text">Arıza Oluştur</span></a>
+                                                        </li>
+                                                        <li class="nk-menu-item">
+                                                            <a asp-controller="Fault" asp-action="FaultList" class="nk-menu-link"><span class="nk-menu-text">Arıza Listesi</span></a>
+                                                        </li>
+
+                                                    </ul>
                                                 </li>
-                                                <li class="nk-menu-item">
-                                                    <a asp-controller="Fault" asp-action="FaultList" class="nk-menu-link"><span class="nk-menu-text">Arıza Listesi</span></a>
+                                            }
+                                            @if (User.IsInRole("admin"))
+                                            {
+                                                <li class="nk-menu-item has-sub">
+                                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                                        <span class="nk-menu-icon"> <em class="icon ni ni-flag-fill"></em></span>
+                                                        <span class="nk-menu-text">Departman Tanım</span>
+                                                    </a>
+                                                    <ul class="nk-menu-sub">
+                                                        <li class="nk-menu-item">
+                                                            <a asp-controller="Department" asp-action="DepartmentCreate" class="nk-menu-link"><span class="nk-menu-text">Departman Oluştur</span></a>
+                                                        </li>
+                                                        <li class="nk-menu-item">
+                                                            <a asp-controller="Department" asp-action="DepartmentList" class="nk-menu-link"><span class="nk-menu-text">Departman Listesi</span></a>
+                                                        </li>
+
+                                                    </ul>
                                                 </li>
 
-                                            </ul><!-- .nk-menu-sub -->
-                                        </li><!-- .nk-menu-item -->
-                                        <li class="nk-menu-item has-sub">
-                                            <a href="#" class="nk-menu-link nk-menu-toggle">
-                                                <span class="nk-menu-icon"> <em class="icon ni ni-flag-fill"></em></span>
-                                                <span class="nk-menu-text">Departman Tanım</span>
-                                            </a>
-                                            <ul class="nk-menu-sub">
-                                                <li class="nk-menu-item">
-                                                    <a asp-controller="Department" asp-action="DepartmentCreate" class="nk-menu-link"><span class="nk-menu-text">Departman Oluştur</span></a>
-                                                </li>
-                                                <li class="nk-menu-item">
-                                                    <a asp-controller="Department" asp-action="DepartmentList" class="nk-menu-link"><span class="nk-menu-text">Departman Listesi</span></a>
+                                            }
+
+                                            @if (User.IsInRole("admin"))
+                                            {
+                                                <li class="nk-menu-item has-sub">
+                                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                                        <span class="nk-menu-icon"><em class="icon ni ni-note-add-fill-c"></em></span>
+                                                        <span class="nk-menu-text">İş Kategori Tanım</span>
+                                                    </a>
+                                                    <ul class="nk-menu-sub">
+                                                        <li class="nk-menu-item">
+                                                            <a asp-controller="TaskCategory" asp-action="TaskCategoryCreate" class="nk-menu-link"><span class="nk-menu-text">İş Kategorisi Oluştur</span></a>
+                                                        </li>
+                                                        <li class="nk-menu-item">
+                                                            <a asp-controller="TaskCategory" asp-action="TaskCategoryList" class="nk-menu-link"><span class="nk-menu-text">İş Kategori Listesi</span></a>
+                                                        </li>
+
+                                                    </ul>
                                                 </li>
 
-                                            </ul><!-- .nk-menu-sub -->
-                                        </li><!-- .nk-menu-item -->
+                                            }
 
-                                        <li class="nk-menu-item has-sub">
-                                            <a href="#" class="nk-menu-link nk-menu-toggle">
-                                                <span class="nk-menu-icon"><em class="icon ni ni-note-add-fill-c"></em></span>
-                                                <span class="nk-menu-text">İş Kategori Tanım</span>
-                                            </a>
-                                            <ul class="nk-menu-sub">
-                                                <li class="nk-menu-item">
-                                                    <a asp-controller="TaskCategory" asp-action="TaskCategoryCreate" class="nk-menu-link"><span class="nk-menu-text">İş Kategorisi Oluştur</span></a>
-                                                </li>
-                                                <li class="nk-menu-item">
-                                                    <a asp-controller="TaskCategory" asp-action="TaskCategoryList" class="nk-menu-link"><span class="nk-menu-text">İş Kategori Listesi</span></a>
+                                            @if (User.IsInRole("admin"))
+
+                                            {
+                                                <li class="nk-menu-item has-sub">
+                                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                                        <span class="nk-menu-icon"> <em class="icon ni ni-tranx"></em>   </span>
+                                                        <span class="nk-menu-text">Rol İşlemleri</span>
+                                                    </a>
+                                                    <ul class="nk-menu-sub">
+                                                        <li class="nk-menu-item">
+                                                            <a asp-controller="Role" asp-action="CreateRole" class="nk-menu-link"><span class="nk-menu-text">Rol Oluştur</span></a>
+                                                        </li>
+                                                        <li class="nk-menu-item">
+                                                            <a asp-controller="Role" asp-action="RoleList" class="nk-menu-link"><span class="nk-menu-text">Rol Listesi</span></a>
+                                                        </li>
+                                                    </ul>
                                                 </li>
 
-                                            </ul><!-- .nk-menu-sub -->
-                                        </li><!-- .nk-menu-item -->
 
-                                        <li class="nk-menu-item has-sub">
-                                            <a href="#" class="nk-menu-link nk-menu-toggle">
-                                                <span class="nk-menu-icon"> <em class="icon ni ni-tranx"></em>   </span>
-                                                <span class="nk-menu-text">Rol İşlemleri</span>
-                                            </a>
-                                            <ul class="nk-menu-sub">
-                                                <li class="nk-menu-item">
-                                                    <a asp-controller="Role" asp-action="CreateRole" class="nk-menu-link"><span class="nk-menu-text">Rol Oluştur</span></a>
-                                                </li>
-                                                <li class="nk-menu-item">
-                                                    <a asp-controller="Role" asp-action="RoleList" class="nk-menu-link"><span class="nk-menu-text">Rol Listesi</span></a>
-                                                </li>
-                                            </ul><!-- .nk-menu-sub -->
-                                        </li><!-- .nk-menu-item -->
-                                    </ul><!-- .nk-menu-sub -->
-                                </li><!-- .nk-menu-item -->
-                            </ul><!-- .nk-menu -->
-                        </div><!-- .nk-sidebar-menu -->
-                    </div><!-- .nk-sidebar-content -->
-                </div><!-- .nk-sidebar-element -->
+                                            }
+
+                                        </ul>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="nk-wrap ">
                 <div class="nk-header nk-header-fixed is-light">
@@ -252,7 +303,7 @@
                             <div class="nk-menu-trigger d-xl-none ms-n1">
                                 <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
                             </div>
-                           
+
                             <div class="nk-header-search ms-3 ms-xl-0">
                                 <em class="icon ni ni-search"></em>
                                 <input type="text" class="form-control border-transparent form-focus-none" placeholder="Search anything">

@@ -10,6 +10,7 @@ using System.Data;
 namespace CrmApp.Controllers
 {
     [Authorize(Roles = "admin")]
+    [Authorize(Roles = "varlık arıza")]
 
     public class AssetFaultController : Controller
     {
