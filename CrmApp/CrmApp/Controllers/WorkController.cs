@@ -45,10 +45,8 @@ namespace CrmApp.Controllers
 
 
 
-            ViewData["AssetFaultId"] = new SelectList(assetFaults, "Id", "Name");
-
-            //ViewData["AssetFaultId"] = new SelectList(_context.AssetFaults, "Id", "Name");
-            ViewData["DepartmentId"] = new SelectList(_context.Department, "Id", "DepartmanName");
+            ViewData["AssetFaultId"] = new SelectList(assetFaults.OrderBy(x=> x.Name), "Id", "Name");
+            ViewData["DepartmentId"] = new SelectList(_context.Department.OrderBy(x => x.DepartmanName), "Id", "DepartmanName");
 
             return View();
         }
@@ -57,8 +55,22 @@ namespace CrmApp.Controllers
         public async Task<IActionResult> WorkCreate(WorkCreateViewModel model)
         {
 
-            ViewData["AssetFaultId"] = new SelectList(_context.AssetFaults, "Id", "Name");
-            ViewData["DepartmentId"] = new SelectList(_context.Department, "Id", "DepartmanName");
+            var user = await _UserManager.FindByNameAsync(User.Identity.Name);
+            var assetFaults = _context.AssetFaults.Join(_context.Assets, x => x.Id, y => y.Id, (x, y)
+                => new { AssetFaults = x, Assets = y }).Join(_context.Users, x => x.Assets.AppUserId, y => y.Id, (x, y)
+                => new { x.AssetFaults, x.Assets, Users = y }).Select(x => new WorkFaultViewModel
+                {
+                    Id = x.AssetFaults.Id,
+                    Name = x.AssetFaults.Name,
+                    UserId = x.Users.Id
+
+                }).Where(x => x.UserId == user.Id);
+
+
+
+
+            ViewData["AssetFaultId"] = new SelectList(assetFaults.OrderBy(x=> x.Name), "Id", "Name");
+            ViewData["DepartmentId"] = new SelectList(_context.Department.OrderBy(x=> x.DepartmanName), "Id", "DepartmanName");
 
             DateTime systemClock = DateTime.Now;
             DateTime controlClock = systemClock.AddMinutes(30);
@@ -108,7 +120,7 @@ namespace CrmApp.Controllers
             {
                 numberUp = years + "-" + "0001";
             }
-            var user = await _UserManager.FindByNameAsync(User.Identity.Name);
+            //var user = await _UserManager.FindByNameAsync(User.Identity.Name);
             var departmanId = _context.Department.Join(_context.Users, x => x.Id, y => y.DepartmentId, (x, y) => new
             { Departman = x, Users = y }).Where(x => x.Users.Id == model.AppUserId).FirstOrDefault();
             var tasCategoryId = _context.TaskCategories.Where(x => x.Name.Contains("varlık")).FirstOrDefault();
@@ -144,8 +156,8 @@ namespace CrmApp.Controllers
 
         public async Task<IActionResult> TaskCreate()
         {
-            ViewData["AppUserId"] = new SelectList(_context.Users, "Id", "NameSurName");
-            ViewData["TaskCategoryId"] = new SelectList(_context.TaskCategories, "Id", "Name");
+            ViewData["AppUserId"] = new SelectList(_context.Users.OrderBy(x=> x.NameSurName), "Id", "NameSurName");
+            ViewData["TaskCategoryId"] = new SelectList(_context.TaskCategories.OrderBy(x=> x.Name), "Id", "Name");
 
             return View();
         }
@@ -157,8 +169,8 @@ namespace CrmApp.Controllers
         public async Task<IActionResult> TaskCreate(WorkCreateViewModel model)
         {
 
-            ViewData["AppUserId"] = new SelectList(_context.Users, "Id", "NameSurName");
-            ViewData["TaskCategoryId"] = new SelectList(_context.TaskCategories, "Id", "Name");
+            ViewData["AppUserId"] = new SelectList(_context.Users.OrderBy(x=> x.NameSurName), "Id", "NameSurName");
+            ViewData["TaskCategoryId"] = new SelectList(_context.TaskCategories.OrderBy(x => x.Name), "Id", "Name");
 
             DateTime systemClock = DateTime.Now;
             DateTime controlClock = systemClock.AddMinutes(30);
@@ -275,7 +287,7 @@ namespace CrmApp.Controllers
                .ToList();
 
             // SelectList'e eklerken kullanabilirsiniz
-            ViewData["AppUserId"] = new SelectList(bilgiIslemKullanicilari, "Id", "NameSurName");
+            ViewData["AppUserId"] = new SelectList(bilgiIslemKullanicilari.OrderBy(x=> x.NameSurName), "Id", "NameSurName");
 
 
             var worksDetails = await _context.Works.Where(x => x.Id == Id).FirstOrDefaultAsync();
@@ -315,7 +327,7 @@ namespace CrmApp.Controllers
                .Select(u => new { Id = u.Id, NameSurName = u.NameSurName })
                .ToList();
 
-            ViewData["AppUserId"] = new SelectList(bilgiIslemKullanicilari, "Id", "NameSurName");
+            ViewData["AppUserId"] = new SelectList(bilgiIslemKullanicilari.OrderBy(x => x.NameSurName), "Id", "NameSurName");
 
 
             var worksDetails = await _context.Works.Where(x => x.Id == Id).FirstOrDefaultAsync();
@@ -439,6 +451,47 @@ namespace CrmApp.Controllers
             var userControl = await _UserManager.FindByNameAsync(User.Identity.Name);
 
             var worksListViewModel = worksList.Where(x => x.AppUserId == userControl.Id).Select(x => new MyWorksViewModel()
+            {
+                Id = x.Id,
+                Title = x.Title,
+                Create = x.Create,
+                DeadLine = x.DeadLine,
+                WhoIsCreate = x.WhoIsCreate,
+                Status = x.Status,
+                WorkOrderNumber = x.WorkOrderNumber
+
+
+            }).OrderByDescending(x => x.Id).ToList();
+            return View(worksListViewModel);
+        }
+
+        public async Task<IActionResult> MyDepartmentOpenedWorks()
+        {
+            var worksList = await _context.Works.ToListAsync();
+
+            var userControl = await _UserManager.FindByNameAsync(User.Identity.Name);
+
+            var worksListViewModel = worksList.Where(x => x.WhoIsCreate == userControl.NameSurName).Select(x => new MyWorksViewModel()
+            {
+                Id = x.Id,
+                Title = x.Title,
+                Create = x.Create,
+                DeadLine = x.DeadLine,
+                WhoIsCreate = x.WhoIsCreate,
+                Status = x.Status,
+                WorkOrderNumber = x.WorkOrderNumber
+
+
+            }).OrderByDescending(x => x.Id).ToList();
+            return View(worksListViewModel);
+        }
+        public async Task<IActionResult> MyDepartmentWorks()
+        {
+            var worksList = await _context.Works.ToListAsync();
+
+            var userControl = await _UserManager.FindByNameAsync(User.Identity.Name);
+
+            var worksListViewModel = worksList.Where(x => x.DepartmentId == userControl.DepartmentId).Select(x => new MyWorksViewModel()
             {
                 Id = x.Id,
                 Title = x.Title,

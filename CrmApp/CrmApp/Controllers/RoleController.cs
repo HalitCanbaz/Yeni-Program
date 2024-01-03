@@ -8,7 +8,7 @@ using Microsoft.Identity.Client;
 
 namespace CrmApp.Controllers
 {
-    [Authorize(Roles = "admin")]
+    //[Authorize(Roles = "admin")]
     public class RoleController : Controller
     {
         private readonly UserManager<AppUser> _UserManager;

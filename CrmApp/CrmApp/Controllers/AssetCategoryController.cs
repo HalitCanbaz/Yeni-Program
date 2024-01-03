@@ -36,7 +36,13 @@ namespace CrmApp.Controllers
             {
                 return View();
             }
+            var result = _context.AssetCategories.Where(x => x.Name == model.Name).FirstOrDefault();
+            if (result != null)
+            {
+                TempData["messageError"] = "Bu kayıt daha önce yapılmış. Lütfen yeni kayıt için tekrar deneyiniz.";
 
+                return View();
+            }
             AssetCategory assetCategory = new AssetCategory()
             {
                 Code = model.Code,
@@ -46,7 +52,7 @@ namespace CrmApp.Controllers
 
             await _context.AddAsync(assetCategory);
             await _context.SaveChangesAsync();
-            return View();
+            return RedirectToAction(nameof(AssetCategoryList));
         }
 
         public IActionResult AssetCategoryList()
@@ -57,7 +63,7 @@ namespace CrmApp.Controllers
                 Code = x.Code,
                 Name = x.Name,
                 Description = x.Description
-            }).ToList();
+            }).OrderBy(x=> x.Name).ToList();
             return View(listOfAssetCategory);
         }
     }

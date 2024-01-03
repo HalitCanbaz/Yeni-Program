@@ -15,6 +15,12 @@
                 <hr />
 
                 <form asp-controller="Fault" asp-action="FaultCreate">
+                    @if (TempData["messageError"] != null)
+                    {
+                        <div class="alert alert-icon alert-danger" role="alert">
+                            @TempData["messageError"]
+                        </div>
+                    }
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="Code" class="control-label">Arıza Kodu</label>

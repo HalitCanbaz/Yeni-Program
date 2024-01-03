@@ -36,6 +36,17 @@ namespace CrmApp.Controllers
                 return View();
             }
 
+            var result = _context.Faults.Where(x => x.Name == model.Name).FirstOrDefault();
+            if (result != null)
+            {
+                TempData["messageError"] = "Bu kayıt daha önce yapılmış. Lütfen yeni kayıt için tekrar deneyiniz.";
+
+                return View();
+            }
+
+
+
+
             Fault fault = new Fault()
             {
                 Code = model.Code,
@@ -56,7 +67,7 @@ namespace CrmApp.Controllers
                 Code = x.Code,
                 Name = x.Name,
                 Description = x.Description
-            }).ToList();
+            }).OrderBy(x=> x.Name).ToList();
             return View(listOfFault);
         }
     }

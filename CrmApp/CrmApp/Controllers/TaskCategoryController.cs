@@ -1,5 +1,4 @@
-﻿using CrmApp.Migrations;
-using CrmApp.Models;
+﻿using CrmApp.Models;
 using CrmApp.Models.Entities;
 using CrmApp.ViewModel.TaskCategoryViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -38,6 +37,15 @@ namespace CrmApp.Controllers
 
             }
 
+            var result = _context.TaskCategories.Where(x => x.Name == model.Name).FirstOrDefault();
+            if (result != null)
+            {
+                TempData["messageError"] = "Bu kayıt daha önce yapılmış. Lütfen yeni kayıt için tekrar deneyiniz.";
+
+                return View();
+            }
+
+
             TaskCategory task = new TaskCategory()
             {
                 Name = model.Name.ToUpper(),
@@ -45,7 +53,7 @@ namespace CrmApp.Controllers
 
             await _context.AddAsync(task);
             await _context.SaveChangesAsync();
-            return View();
+            return RedirectToAction(nameof(TaskCategoryList));
 
 
         }
@@ -57,7 +65,7 @@ namespace CrmApp.Controllers
             {
                 Name = x.Name
 
-            }).ToList();
+            }).OrderBy(x => x.Name).ToList();
             return View(listOfTaskCategory);
         }
 

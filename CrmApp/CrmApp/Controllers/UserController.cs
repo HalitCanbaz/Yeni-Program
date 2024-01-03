@@ -34,7 +34,7 @@ namespace CrmApp.Controllers
         {
             Department departman = new Department();
 
-            ViewData["DepartmanId"] = new SelectList(_context.Department, "Id", "DepartmanName", departman.Id);
+            ViewData["DepartmanId"] = new SelectList(_context.Department.OrderBy(x=> x.DepartmanName), "Id", "DepartmanName", departman.Id);
 
             return View();
         }
@@ -44,7 +44,7 @@ namespace CrmApp.Controllers
         {
             Department departman = new Department();
 
-            ViewData["DepartmanId"] = new SelectList(_context.Department, "Id", "DepartmanName", departman.Id);
+            ViewData["DepartmanId"] = new SelectList(_context.Department.OrderBy(x=> x.DepartmanName), "Id", "DepartmanName", departman.Id);
 
             if (!ModelState.IsValid)
             {
@@ -105,7 +105,7 @@ namespace CrmApp.Controllers
                 Departman = x.Departman.DepartmanName,
                 Status = x.Users.Status
 
-            }).ToList();
+            }).OrderBy(x=> x.NameSurname).ToList();
             //.Where(x => x.UserName == currentUse.UserName)
 
             return View(userListViewModel);
@@ -233,6 +233,7 @@ namespace CrmApp.Controllers
             var currentDepartman = await _context.Department.Where(x => x.Id == currentUser.DepartmentId).FirstOrDefaultAsync();
             var userEditViewModel = new UserDetailsViewModel
             {
+                Id=currentUser.Id,  
                 UserName = currentUser.UserName,
                 NameSurname = currentUser.NameSurName,
                 Departman = currentDepartman.DepartmanName,
@@ -261,7 +262,7 @@ namespace CrmApp.Controllers
                 PictureUrl = x.Picture
 
 
-            }).ToList();
+            }).OrderBy(x=> x.NameSurname).ToList();
             //.Where(x => x.UserName == currentUse.UserName)
 
             return View(userListViewModel);
@@ -279,7 +280,6 @@ namespace CrmApp.Controllers
             var currentUser = await _UserManager.FindByNameAsync(User.Identity.Name);
             var currentDepartman = await _context.Department.Where(x => x.Id == currentUser.DepartmentId).SingleOrDefaultAsync();
             ViewData["Departman"] = currentDepartman.DepartmanName;
-
             var userEditViewModel = new UserEditViewModel()
             {
                 UserName = currentUser.UserName!,

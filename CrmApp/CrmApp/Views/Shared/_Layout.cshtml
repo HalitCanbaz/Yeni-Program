@@ -2,7 +2,6 @@
 <html lang="zxx" class="js">
 
 <head>
-    <base href=".~/">
     <meta charset="utf-8">
     <meta name="author" content="Halit-Canbaz">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,7 +12,8 @@
     <title>Hidromas</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="~/assets/css/dashlite.css?ver=3.0.0">
-    <link id="skin-default" rel="stylesheet" href="~/assets/css/theme.css?ver=3.0.0">
+    @*    <link id="skin-default" rel="stylesheet" href="~/assets/css/theme.css?ver=3.0.0">
+    *@
 </head>
 
 
@@ -89,6 +89,15 @@
                                         <li class="nk-menu-item">
                                             <a asp-controller="Work" asp-action="MyOpenedWorks" class="nk-menu-link"><span class="nk-menu-text">Açtığım İşler</span></a>
                                         </li>
+                                        @if (User.IsInRole("admin") || User.IsInRole("gorev onay"))
+                                        {
+                                            <li class="nk-menu-item">
+                                                <a asp-controller="Work" asp-action="MyDepartmentOpenedWorks" class="nk-menu-link"><span class="nk-menu-text">Departmanın Açtığı İşler</span></a>
+                                            </li>
+                                            <li class="nk-menu-item">
+                                                <a asp-controller="Work" asp-action="MyDepartmentWorks" class="nk-menu-link"><span class="nk-menu-text">Departmanın İşleri</span></a>
+                                            </li>
+                                        }
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item has-sub">
@@ -121,7 +130,7 @@
                                         <span class="nk-menu-text">Duyurular</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
-                                @if (User.IsInRole("admin") || User.IsInRole("varlık"))
+                                @if (User.IsInRole("admin") || User.IsInRole("varlık") || User.IsInRole("varlık arıza") || User.IsInRole("varlık kategori"))
                                 {
                                     <li class="nk-menu-item has-sub">
                                         <a href="#" class="nk-menu-link nk-menu-toggle">
@@ -460,14 +469,12 @@
         <!-- main e -->
     </div>
 
-
-
-
     @await RenderSectionAsync("Scripts", required: false)
+
 
     <script src="~/assets/js/bundle.js?ver=3.0.0"></script>
     <script src="~/assets/js/scripts.js?ver=3.0.0"></script>
-    <script src="~/assets/js/charts/chart-ecommerce.js?ver=3.0.0"></script>
+
 
 
 </body>

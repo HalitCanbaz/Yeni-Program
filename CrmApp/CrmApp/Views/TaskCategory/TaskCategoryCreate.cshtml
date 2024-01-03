@@ -15,6 +15,12 @@
                 <hr />
 
                 <form asp-controller="TaskCategory" asp-action="TaskCategoryCreate">
+                    @if (TempData["messageError"] != null)
+                    {
+                        <div class="alert alert-icon alert-danger" role="alert">
+                            @TempData["messageError"]
+                        </div>
+                    }
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="Name" class="control-label">İş Kategorisi Adı</label>

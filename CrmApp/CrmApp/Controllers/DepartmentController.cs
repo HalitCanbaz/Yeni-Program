@@ -22,7 +22,7 @@ namespace CrmApp.Controllers
         {
             return View();
         }
-         public IActionResult DepartmentCreate()
+        public IActionResult DepartmentCreate()
         {
             return View();
         }
@@ -35,6 +35,16 @@ namespace CrmApp.Controllers
                 return View();
             }
 
+            var result = _context.Department.Where(x => x.DepartmanName == model.Name).FirstOrDefault();
+            if (result != null)
+            {
+                TempData["messageError"] = "Bu kayıt daha önce yapılmış. Lütfen yeni kayıt için tekrar deneyiniz.";
+
+                return View();
+            }
+
+
+
             Department department = new Department()
             {
                 DepartmanName = model.Name.ToUpper(),
@@ -42,7 +52,7 @@ namespace CrmApp.Controllers
 
             await _context.AddAsync(department);
             await _context.SaveChangesAsync();
-            return View();
+            return RedirectToAction(nameof(DepartmentList));
         }
 
         public IActionResult DepartmentList()
@@ -52,7 +62,7 @@ namespace CrmApp.Controllers
             {
                 Name = x.DepartmanName
 
-            }).ToList();
+            }).OrderBy(x => x.Name).ToList();
             return View(listOfDepartment);
         }
     }

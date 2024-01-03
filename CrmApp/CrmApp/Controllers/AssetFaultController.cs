@@ -42,7 +42,7 @@ namespace CrmApp.Controllers
                 UserName = x.UserName,
                 AssetName = x.AssetName,
                 FaultNameName = x.FaultNameName
-            });
+            }).OrderBy(x => x.FaultNameName);
 
             return View(list.ToList());
         }
@@ -75,14 +75,11 @@ namespace CrmApp.Controllers
         public async Task<IActionResult> AssetFaultCreate(int Id, AssetFaultCreateViewModel model)
         {
             var assets = await _context.Assets.Where(x => x.Id == Id).FirstOrDefaultAsync();
-
-
-            /// varlık categori tablosunda ikinci ka yıtı engelle
-            /// 
-
-
             var asset = await _context.Assets.FindAsync(model.AssetId);
             var fault = await _context.Faults.FindAsync(model.FaultsId);
+
+
+
 
             AssetFault assetFault = new AssetFault()
             {
@@ -121,7 +118,7 @@ namespace CrmApp.Controllers
                 UserName = x.UserName,
                 AssetName = x.AssetName,
                 FaultNameName = x.FaultNameName
-            });
+            }).OrderBy(x => x.FaultNameName);
 
             return View(list.ToList());
         }

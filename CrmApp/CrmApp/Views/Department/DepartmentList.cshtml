@@ -10,20 +10,8 @@
                             <input type="search" id="searchInput" class="form-control form-control-sm" placeholder="Ara" aria-controls="DataTables_Table_3">
                         </label>
                     </div>
-                </div>
-                <div class="col-5 col-sm-8 text-end">
-                    <div class="datatable-filter">
-                        <div class="d-flex justify-content-end g-2">
-                            <div class="dt-export-buttons d-flex align-center">
-                                <div class="dt-export-title d-none d-md-inline-block">Dışa Aktar</div>
-                                <div class="dt-buttons btn-group flex-wrap">
-                                    <button class="btn btn-secondary buttons-copy buttons-html5" tabindex="0" aria-controls="DataTables_Table_3" type="button"><span>Copy</span></button>
-                                    <button class="btn btn-secondary buttons-excel buttons-html5" tabindex="0" aria-controls="DataTables_Table_3" type="button" id="exportToExcel"><span>Excel</span></button>
-                                    <button class="btn btn-secondary buttons-csv buttons-html5" tabindex="0" aria-controls="DataTables_Table_3" type="button"><span>CSV</span></button>
-                                    <button class="btn btn-secondary buttons-pdf buttons-html5" tabindex="0" aria-controls="DataTables_Table_3" type="button"><span>PDF</span></button>
-                                </div>
-                            </div>
-                        </div>
+                    <div>
+                        <a asp-controller="Department" asp-action="DepartmentCreate" class="btn btn-secondary d-none d-md-inline-flex my-3"><em class="icon ni ni-plus"></em><span>Yeni Ekle</span></a>
                     </div>
                 </div>
             </div>
@@ -50,50 +38,3 @@
 </body>
 
 
-
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
-
-
-<script>
-    $(document).ready(function () {
-        $("#searchInput").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $("#DataTables_Table_3 tbody tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-</script>
-
-<script>
-    $(document).ready(function () {
-        $("#searchInput").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $("#DataTables_Table_3 tbody tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-
-        $("#exportToExcel").on("click", function () {
-            exportTableToExcel();
-        });
-
-        function exportTableToExcel() {
-            var htmltable = document.getElementById('DataTables_Table_3');
-            var html = htmltable.outerHTML;
-
-            var blob = new Blob([html], {
-                type: 'application/vnd.officedocument.spreadsheetml.sheet'
-            });
-            var a = document.createElement('a');
-            a.href = window.URL.createObjectURL(blob);
-            a.download = 'is_listesi.xls';
-            a.style.display = 'none';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
-    });
-</script>

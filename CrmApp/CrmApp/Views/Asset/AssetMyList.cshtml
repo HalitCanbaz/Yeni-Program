@@ -1,0 +1,49 @@
+﻿@model List<AssetListViewModel>
+
+<body>
+    <div class="card card-bordered card-preview">
+        <div class="card-inner">
+            <div id="DataTables_Table_3_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                <div class="row justify-between g-2 with-export">
+                    <div id="DataTables_Table_3_filter" class="dataTables_filter">
+                        <label>
+                            <input type="search" id="searchInput" class="form-control form-control-sm" placeholder="Ara" aria-controls="DataTables_Table_3">
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="nowrap table dtr-inline" data-export-title="Dışa Aktar" id="DataTables_Table_3" aria-describedby="DataTables_Table_3_info">
+                    <thead>
+                        <tr>
+                            <th>Varlık Kodu</th>
+                            <th>Varlık Adı</th>
+                            <th>Varlık Sahibi</th>
+                            <th>Seri No</th>
+                            <th>Varlık Kategorisi</th>
+                            <th>Varlık Tipi</th>
+                            <th>Açıklama</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="odd">
+                                <td>@item.Code</td>
+                                <td>@item.Name</td>
+                                <td>@item.AppUser</td>
+                                <td>@item.SerialNo</td>
+                                <td>@item.AssetCategoryName</td>
+                                <td>@item.AssetTypneName</td>
+                                <td>@item.Description</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
