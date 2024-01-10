@@ -5,6 +5,50 @@
 }
 
 
+<body class="nk-body bg-lighter npc-default has-sidebar ">
+    <div class="nk-content-inner">
+        <div class="nk-content-body">
+            <div class="nk-block nk-block-lg">
+                <div class="card card-bordered card-preview">
+                    <div class="card-inner">
+                        <table class="datatable-init-export nowrap table">
+                            <thead>
+                                <tr>
+                                    <th>İşi Açan</th>
+                                    <th>İş Emri</th>
+                                    <th>Konusu</th>
+                                    <th>Açılış Tarihi</th>
+                                    <th>Talep Tarihi</th>
+                                    <th>Durumu</th>
+                                    <th>Detay</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="odd">
+                                        <td class="dtr-control sorting_1" tabindex="0">@item.WhoIsCreate</td>
+                                        <td>@item.WorkOrderNumber</td>
+                                        <td>@item.Title</td>
+                                        <td>@item.Create</td>
+                                        <td>@item.DeadLine</td>
+                                        <td>@item.Status</td>
+                                        <td>
+                                            <a class="btn btn-secondary" asp-action="WorkDetail" asp-route-id="@item.Id">Detay</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+@*
 <div class="card card-bordered card-preview">
     <div class="card-inner">
         <div id="DataTables_Table_3_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
@@ -51,4 +95,4 @@
         </div>
     </div>
 </div>
-
+*@

@@ -19,7 +19,5 @@
         public string WorkOrderNumber { get; set; }
         public int AppUserId { get; set; }
 
-
-
     }
 }

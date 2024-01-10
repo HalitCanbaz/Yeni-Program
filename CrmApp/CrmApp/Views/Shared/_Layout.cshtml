@@ -6,23 +6,17 @@
     <meta name="author" content="Halit-Canbaz">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="İş ve Proje Takip Uygulaması">
-    <!-- Fav Icon  -->
     <link rel="shortcut icon" href="~/images/h5.png">
-    <!-- Page Title  -->
     <title>Hidromas</title>
-    <!-- StyleSheets  -->
     <link rel="stylesheet" href="~/assets/css/dashlite.css?ver=3.0.0">
-    @*    <link id="skin-default" rel="stylesheet" href="~/assets/css/theme.css?ver=3.0.0">
-    *@
+   
 </head>
 
 
 
 <body class="nk-body bg-lighter npc-default has-sidebar ">
     <div class="nk-app-root">
-        <!-- main s -->
         <div class="nk-main ">
-            <!-- sidebar s -->
             <div class="nk-sidebar nk-sidebar-fixed is-light " data-content="sidebarMenu">
                 <div class="nk-sidebar-element nk-sidebar-head">
                     <div class="nk-sidebar-brand">
@@ -36,7 +30,7 @@
                         <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em class="icon ni ni-arrow-left"></em></a>
                         <a href="#" class="nk-nav-compact nk-quick-nav-icon d-none d-xl-inline-flex" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
                     </div>
-                </div><!-- .nk-sidebar-element -->
+                </div>
                 <div class="nk-sidebar-element">
                     <div class="nk-sidebar-content">
                         <div class="nk-sidebar-menu" data-simplebar>
@@ -44,19 +38,17 @@
 
                                 <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">Analizler</h6>
-                                </li><!-- .nk-menu-heading -->
+                                </li>
                                 <li class="nk-menu-item has-sub">
                                     <a href="#" class="nk-menu-link nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-growth-fill"></em></span>
                                         <span class="nk-menu-text">Bitirme Analizlerim</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->
-
-
+                                </li>
 
                                 <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">Uygulamalar</h6>
-                                </li><!-- .nk-menu-heading -->
+                                </li>
                                 <li class="nk-menu-item has-sub">
                                     <a href="#" class="nk-menu-link nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb-fill"></em></span>
@@ -65,7 +57,7 @@
 
                                     <ul class="nk-menu-sub">
                                         <li class="nk-menu-item">
-                                            <a asp-controller="Work" asp-action="WorkCreate" class="nk-menu-link"><span class="nk-menu-text">Yeni İş Oluştur</span></a>
+                                            <a asp-controller="Work" asp-action="WorkCreate" class="nk-menu-link"><span class="nk-menu-text">Arıza Kaydı Oluştur</span></a>
                                         </li>
                                         @if (User.IsInRole("admin") || User.IsInRole("görev oluştur"))
                                         {
@@ -73,16 +65,12 @@
                                                 <a asp-controller="Work" asp-action="TaskCreate" class="nk-menu-link"><span class="nk-menu-text">Yeni Görev Oluştur</span></a>
                                             </li>
                                         }
-
-
                                         @if (User.IsInRole("admin") || User.IsInRole("görev onay"))
                                         {
                                             <li class="nk-menu-item">
                                                 <a asp-controller="Work" asp-action="WorkPendingApprovalList" class="nk-menu-link"><span class="nk-menu-text">Onay Bekleyenler</span></a>
                                             </li>
                                         }
-
-
                                         <li class="nk-menu-item">
                                             <a asp-controller="Work" asp-action="MyWorks" class="nk-menu-link"><span class="nk-menu-text">Bana Açılan İşler</span></a>
                                         </li>
@@ -95,11 +83,11 @@
                                                 <a asp-controller="Work" asp-action="MyDepartmentOpenedWorks" class="nk-menu-link"><span class="nk-menu-text">Departmanın Açtığı İşler</span></a>
                                             </li>
                                             <li class="nk-menu-item">
-                                                <a asp-controller="Work" asp-action="MyDepartmentWorks" class="nk-menu-link"><span class="nk-menu-text">Departmanın İşleri</span></a>
+                                                <a asp-controller="Work" asp-action="MyDepartmentWorks" class="nk-menu-link"><span class="nk-menu-text">Departmana Açılan İşleri</span></a>
                                             </li>
                                         }
-                                    </ul><!-- .nk-menu-sub -->
-                                </li><!-- .nk-menu-item -->
+                                    </ul>
+                                </li>
                                 <li class="nk-menu-item has-sub">
                                     <a href="#" class="nk-menu-link nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
@@ -113,14 +101,14 @@
                                             <a asp-controller="User" asp-action="ChangePassword" class="nk-menu-link"><span class="nk-menu-text">Şifre Değiştir</span></a>
                                         </li>
 
-                                    </ul><!-- .nk-menu-sub -->
-                                </li><!-- .nk-menu-item -->
+                                    </ul>
+                                </li>
                                 <li class="nk-menu-item has-sub">
                                     <a href="#" class="nk-menu-link nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-puzzle-fill"></em></span>
                                         <span class="nk-menu-text">Yarışma / Etkinlik</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->
+                                </li>
 
 
 
@@ -129,7 +117,7 @@
                                         <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
                                         <span class="nk-menu-text">Duyurular</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->
+                                </li>
                                 @if (User.IsInRole("admin") || User.IsInRole("varlık") || User.IsInRole("varlık arıza") || User.IsInRole("varlık kategori"))
                                 {
                                     <li class="nk-menu-item has-sub">
@@ -316,7 +304,7 @@
                             <div class="nk-header-search ms-3 ms-xl-0">
                                 <em class="icon ni ni-search"></em>
                                 <input type="text" class="form-control border-transparent form-focus-none" placeholder="Search anything">
-                            </div><!-- .nk-header-news -->
+                            </div>
                             <div class="nk-header-tools">
                                 <ul class="nk-quick-nav">
                                     <li class="dropdown language-dropdown d-none d-sm-block me-n1">
@@ -339,7 +327,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                    </li><!-- .dropdown -->
+                                    </li>
                                     <li class="dropdown chats-dropdown hide-mb-xs">
                                         <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-bs-toggle="dropdown">
                                             <div class="icon-status icon-status-na"><em class="icon ni ni-comments"></em></div>
@@ -371,9 +359,9 @@
                                                                 </div>
                                                             </div>
                                                         </a>
-                                                    </li><!-- .chat-item -->
-                                                </ul><!-- .chat-list -->
-                                            </div><!-- .nk-dropdown-body -->
+                                                    </li>
+                                                </ul>
+                                            </div>
                                             <div class="dropdown-foot center">
                                                 <a>Hepsini Gör</a>
                                             </div>
@@ -398,8 +386,8 @@
                                                             <div class="nk-notification-time">2 saat önce</div>
                                                         </div>
                                                     </div>
-                                                </div><!-- .nk-notification -->
-                                            </div><!-- .nk-dropdown-body -->
+                                                </div>
+                                            </div>
                                             <div class="dropdown-foot center">
                                                 <a>Hepsini Gör</a>
                                             </div>
@@ -451,30 +439,21 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div><!-- .nk-header-wrap -->
-                    </div><!-- .container-fliud -->
+                        </div>
+                    </div>
                 </div>
-                <!-- main header e -->
-                <!-- content s -->
                 <div class="nk-content ">
                     @RenderBody()
 
                 </div>
-                <!-- content e -->
-                <!-- footer s -->
-                <!-- footer e -->
             </div>
-            <!-- wrap e -->
         </div>
-        <!-- main e -->
     </div>
-
     @await RenderSectionAsync("Scripts", required: false)
-
 
     <script src="~/assets/js/bundle.js?ver=3.0.0"></script>
     <script src="~/assets/js/scripts.js?ver=3.0.0"></script>
-
+    <script src="~/assets/js/libs/datatable-btns.js?ver=3.0.0"></script>
 
 
 </body>
