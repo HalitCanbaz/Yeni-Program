@@ -1,6 +1,6 @@
 ﻿<div>
     <div>
-        @if (User.IsInRole("admin") || User.IsInRole("gorev onay"))
+        @if (User.IsInRole("admin") || User.IsInRole("görev onay"))
         {
             <div>
                 @await Component.InvokeAsync("OnayBekleyenComponent")

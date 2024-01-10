@@ -20,6 +20,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRDYXRlZ29yeVxBc3NldENhdGVnb3J5Q3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/AssetCategory/AssetCategoryEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRDYXRlZ29yeVxBc3NldENhdGVnb3J5RWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/AssetCategory/AssetCategoryList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRDYXRlZ29yeVxBc3NldENhdGVnb3J5TGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -40,12 +44,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRUeXBlXEFzc2V0VHlwZUNyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/AssetType/AssetTypeEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRUeXBlXEFzc2V0VHlwZUVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/AssetType/AssetTypeList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRUeXBlXEFzc2V0VHlwZUxpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Asset/AssetCreate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRcQXNzZXRDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Asset/AssetEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRcQXNzZXRFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Asset/AssetList.cshtml]
@@ -62,6 +74,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Department/DepartmentCreate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxEZXBhcnRtZW50Q3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Department/DepartmentEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxEZXBhcnRtZW50RWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/Department/DepartmentList.cshtml]
@@ -126,6 +142,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/TaskCategory/TaskCategoryCreate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza0NhdGVnb3J5XFRhc2tDYXRlZ29yeUNyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/TaskCategory/TaskCategoryEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza0NhdGVnb3J5XFRhc2tDYXRlZ29yeUVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/hcanbaz/Desktop/yeni program/CrmApp/CrmApp/Views/TaskCategory/TaskCategoryList.cshtml]

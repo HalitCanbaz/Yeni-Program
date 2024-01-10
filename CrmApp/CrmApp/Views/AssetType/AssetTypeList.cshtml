@@ -22,6 +22,8 @@
                             <th>Tür Kodu</th>
                             <th>Tür Adı/Tanımı</th>
                             <th>Tür Açıklaması</th>
+                            <th>Tür Düzelt</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -31,6 +33,9 @@
                                 <td>@item.Code</td>
                                 <td>@item.Name</td>
                                 <td>@item.Description</td>
+                                <td>
+                                    <a class="btn btn-secondary" asp-action="AssetTypeEdit" asp-route-id="@item.Id">Düzelt</a>
+                                </td>
                             </tr>
                         }
                     </tbody>

@@ -75,7 +75,7 @@
                                         }
 
 
-                                        @if (User.IsInRole("admin") || User.IsInRole("gorev onay"))
+                                        @if (User.IsInRole("admin") || User.IsInRole("görev onay"))
                                         {
                                             <li class="nk-menu-item">
                                                 <a asp-controller="Work" asp-action="WorkPendingApprovalList" class="nk-menu-link"><span class="nk-menu-text">Onay Bekleyenler</span></a>
@@ -89,7 +89,7 @@
                                         <li class="nk-menu-item">
                                             <a asp-controller="Work" asp-action="MyOpenedWorks" class="nk-menu-link"><span class="nk-menu-text">Açtığım İşler</span></a>
                                         </li>
-                                        @if (User.IsInRole("admin") || User.IsInRole("gorev onay"))
+                                        @if (User.IsInRole("admin") || User.IsInRole("görev onay"))
                                         {
                                             <li class="nk-menu-item">
                                                 <a asp-controller="Work" asp-action="MyDepartmentOpenedWorks" class="nk-menu-link"><span class="nk-menu-text">Departmanın Açtığı İşler</span></a>

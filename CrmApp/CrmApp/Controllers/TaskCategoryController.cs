@@ -1,5 +1,6 @@
 ﻿using CrmApp.Models;
 using CrmApp.Models.Entities;
+using CrmApp.ViewModel.DepartmentViewModels;
 using CrmApp.ViewModel.TaskCategoryViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -63,12 +64,42 @@ namespace CrmApp.Controllers
             var result = _context.TaskCategories.ToList();
             var listOfTaskCategory = result.Select(x => new TaskCategoryListViewModel()
             {
+                Id=x.Id,
                 Name = x.Name
 
             }).OrderBy(x => x.Name).ToList();
             return View(listOfTaskCategory);
         }
 
+        public IActionResult TaskCategoryEdit(int Id)
+        {
+            var result = _context.TaskCategories.Where(x => x.Id == Id).FirstOrDefault();
+
+            var department = new TaskCategoryEditViewModel
+            {
+                Id = result.Id,
+                Name = result.Name,
+
+            };
+
+            return View(department);
+        }
+
+
+        [HttpPost]
+        public IActionResult TaskCategoryEdit(int Id, TaskCategoryEditViewModel model)
+        {
+
+            var result = _context.TaskCategories.Where(x => x.Id == Id).FirstOrDefault();
+
+            if (result != null)
+            {
+                result.Name = model.Name.ToUpper();
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction(nameof(TaskCategoryList));
+        }
 
     }
 }

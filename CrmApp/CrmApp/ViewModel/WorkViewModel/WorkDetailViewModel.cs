@@ -1,10 +1,14 @@
-﻿namespace CrmApp.ViewModel.WorkViewModel
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CrmApp.ViewModel.WorkViewModel
 {
     public class WorkDetailViewModel
     {
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+
+        [Required(ErrorMessage = "İşinizin açıklamasını girmeden iş bitirilemez!")]
         public string FinishedDescription { get; set; }
         public string WhoIsCreate { get; set; }
 

@@ -1,5 +1,6 @@
 ﻿using CrmApp.Models;
 using CrmApp.Models.Entities;
+using CrmApp.ViewModel.AssetTypeViewModels;
 using CrmApp.ViewModel.DepartmentViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -60,10 +61,44 @@ namespace CrmApp.Controllers
             var result = _context.Department.ToList();
             var listOfDepartment = result.Select(x => new DepartmentListViewModel()
             {
+                Id=x.Id,    
                 Name = x.DepartmanName
 
             }).OrderBy(x => x.Name).ToList();
             return View(listOfDepartment);
         }
+
+        public IActionResult DepartmentEdit(int Id)
+        {
+            var result = _context.Department.Where(x => x.Id == Id).FirstOrDefault();
+
+            var department = new DepartmentEditViewModel
+            {
+                Id = result.Id,
+                DepartmentName = result.DepartmanName,
+
+            };
+
+            return View(department);
+        }
+
+
+        [HttpPost]
+        public IActionResult DepartmentEdit(int Id, DepartmentEditViewModel model)
+        {
+
+            var result = _context.Department.Where(x => x.Id == Id).FirstOrDefault();
+
+            if (result != null)
+            {
+                result.DepartmanName = model.DepartmentName.ToUpper();
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction(nameof(DepartmentList));
+        }
+
+
+
     }
 }

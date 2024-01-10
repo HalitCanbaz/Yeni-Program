@@ -1,5 +1,6 @@
 ﻿using CrmApp.Models;
 using CrmApp.Models.Entities;
+using CrmApp.ViewModel.AssetCategoryViewModels;
 using CrmApp.ViewModel.AssetViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -49,7 +50,7 @@ namespace CrmApp.Controllers
             {
                 Code = model.Code,
                 Name = model.Name.ToUpper(),
-                SerialNo = model.SerialNo,                
+                SerialNo = model.SerialNo,
                 Description = model.Description,
                 AssetCategoryId = model.AssetCategoryId,
                 AssetTypeId = model.AssetTypeId,
@@ -86,7 +87,7 @@ namespace CrmApp.Controllers
                 AppUser = x.Users.NameSurName,
                 AppUserId = x.Users.Id,
 
-            }).OrderBy(x=> x.Name).ToList();
+            }).OrderBy(x => x.Name).ToList();
 
 
             return View(listOfAsset);
@@ -127,7 +128,7 @@ namespace CrmApp.Controllers
                 Id = x.Id,
                 Code = x.Code,
                 Name = x.Name,
-                SerialNo= x.SerialNo,
+                SerialNo = x.SerialNo,
                 Description = x.Description,
                 AssetCategoryName = x.Name,
                 AssetTypneName = x.Name,
@@ -138,6 +139,54 @@ namespace CrmApp.Controllers
 
             return View(listOfAssetUser);
         }
+
+        public IActionResult AssetEdit(int Id)
+        {
+            ViewData["AssetCategoryId"] = new SelectList(_context.AssetCategories.OrderBy(x => x.Name), "Id", "Name");
+            ViewData["AssetTypeId"] = new SelectList(_context.AssetTypes.OrderBy(x => x.Name), "Id", "Name");
+
+            var result = _context.Assets.Where(x => x.Id == Id).FirstOrDefault();
+            var user = _context.Users.Where(x => x.Id == result.AppUserId).FirstOrDefault();
+
+            var asset = new AssetEditViewModel
+            {
+                Id = result.Id,
+                Code = result.Code,
+                Name = result.Name,
+                SerialNo = result.SerialNo,
+                Description = result.Description,
+                UserName=user.NameSurName
+            };
+
+
+            return View(asset);
+        }
+
+
+        [HttpPost]
+        public IActionResult AssetEdit(int Id, AssetEditViewModel model)
+        {
+
+            ViewData["AssetCategoryId"] = new SelectList(_context.AssetCategories.OrderBy(x => x.Name), "Id", "Name");
+            ViewData["AssetTypeId"] = new SelectList(_context.AssetTypes.OrderBy(x => x.Name), "Id", "Name");
+
+
+            var result = _context.Assets.Where(x => x.Id == Id).FirstOrDefault();
+
+            if (result != null)
+            {
+                result.Code = model.Code;
+                result.Name = model.Name.ToUpper();
+                result.SerialNo = model.SerialNo;
+                result.Description = model.Description;
+                result.AssetCategoryId = model.AssetCategoryId;
+                result.AssetTypeId = model.AssetTypeId;
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction(nameof(AssetList));
+        }
+
 
 
 

@@ -31,5 +31,7 @@ namespace CrmApp.ViewModel.WorkViewModel
         public string ApprovedNote { get; set; }
 
 
+        public string OnaylaReddet { get; set; }
+
     }
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Data;
 
 namespace CrmApp.Controllers
@@ -45,7 +46,7 @@ namespace CrmApp.Controllers
 
 
 
-            ViewData["AssetFaultId"] = new SelectList(assetFaults.OrderBy(x=> x.Name), "Id", "Name");
+            ViewData["AssetFaultId"] = new SelectList(assetFaults.OrderBy(x => x.Name), "Id", "Name");
             ViewData["DepartmentId"] = new SelectList(_context.Department.OrderBy(x => x.DepartmanName), "Id", "DepartmanName");
 
             return View();
@@ -69,8 +70,8 @@ namespace CrmApp.Controllers
 
 
 
-            ViewData["AssetFaultId"] = new SelectList(assetFaults.OrderBy(x=> x.Name), "Id", "Name");
-            ViewData["DepartmentId"] = new SelectList(_context.Department.OrderBy(x=> x.DepartmanName), "Id", "DepartmanName");
+            ViewData["AssetFaultId"] = new SelectList(assetFaults.OrderBy(x => x.Name), "Id", "Name");
+            ViewData["DepartmentId"] = new SelectList(_context.Department.OrderBy(x => x.DepartmanName), "Id", "DepartmanName");
 
             DateTime systemClock = DateTime.Now;
             DateTime controlClock = systemClock.AddMinutes(30);
@@ -134,6 +135,7 @@ namespace CrmApp.Controllers
                 Progress = model.Progress,
                 WhoIsCreate = user.NameSurName,
                 Create = model.Create,
+                Update = DateTime.Now,
                 DeadLine = model.DeadLine,
                 DepartmentId = model.DepartmentId,
                 WorkOpenDepartmanId = user.DepartmentId,
@@ -150,26 +152,24 @@ namespace CrmApp.Controllers
             return RedirectToAction(nameof(WorkController.WorkCreate));
         }
 
+
+
         [Authorize(Roles = "admin, görev oluştur")]
-
-
-
         public async Task<IActionResult> TaskCreate()
         {
-            ViewData["AppUserId"] = new SelectList(_context.Users.OrderBy(x=> x.NameSurName), "Id", "NameSurName");
-            ViewData["TaskCategoryId"] = new SelectList(_context.TaskCategories.OrderBy(x=> x.Name), "Id", "Name");
+            ViewData["AppUserId"] = new SelectList(_context.Users.OrderBy(x => x.NameSurName), "Id", "NameSurName");
+            ViewData["TaskCategoryId"] = new SelectList(_context.TaskCategories.OrderBy(x => x.Name), "Id", "Name");
 
             return View();
         }
 
+
         [Authorize(Roles = "admin, görev oluştur")]
-
-
         [HttpPost]
         public async Task<IActionResult> TaskCreate(WorkCreateViewModel model)
         {
 
-            ViewData["AppUserId"] = new SelectList(_context.Users.OrderBy(x=> x.NameSurName), "Id", "NameSurName");
+            ViewData["AppUserId"] = new SelectList(_context.Users.OrderBy(x => x.NameSurName), "Id", "NameSurName");
             ViewData["TaskCategoryId"] = new SelectList(_context.TaskCategories.OrderBy(x => x.Name), "Id", "Name");
 
             DateTime systemClock = DateTime.Now;
@@ -236,6 +236,7 @@ namespace CrmApp.Controllers
                 Progress = model.Progress,
                 WhoIsCreate = user.NameSurName,
                 Create = model.Create,
+                Update = DateTime.Now,
                 DeadLine = model.DeadLine,
                 DepartmentId = departmanId.Departman.Id,
                 WorkOpenDepartmanId = user.DepartmentId,
@@ -252,8 +253,8 @@ namespace CrmApp.Controllers
             return RedirectToAction(nameof(WorkController.WorkCreate));
         }
 
-        [Authorize(Roles = "admin, görev onay")]
 
+        [Authorize(Roles = "admin, görev onay")]
         public async Task<IActionResult> WorkPendingApprovalList(int Id)
         {
             var worksList = await _context.Works.ToListAsync();
@@ -275,8 +276,8 @@ namespace CrmApp.Controllers
             return View(worksListViewModel);
         }
 
-        [Authorize(Roles = "admin, görev onay")]
 
+        [Authorize(Roles = "admin, görev onay")]
         public async Task<IActionResult> WorkStatusApprovalDetail(int Id)
         {
             var userControl = await _UserManager.FindByNameAsync(User.Identity.Name);
@@ -287,7 +288,7 @@ namespace CrmApp.Controllers
                .ToList();
 
             // SelectList'e eklerken kullanabilirsiniz
-            ViewData["AppUserId"] = new SelectList(bilgiIslemKullanicilari.OrderBy(x=> x.NameSurName), "Id", "NameSurName");
+            ViewData["AppUserId"] = new SelectList(bilgiIslemKullanicilari.OrderBy(x => x.NameSurName), "Id", "NameSurName");
 
 
             var worksDetails = await _context.Works.Where(x => x.Id == Id).FirstOrDefaultAsync();
@@ -315,8 +316,8 @@ namespace CrmApp.Controllers
             return View(details);
         }
 
-        [Authorize(Roles = "admin, görev onay")]
 
+        [Authorize(Roles = "admin, görev onay")]
         [HttpPost]
         public async Task<IActionResult> WorkStatusApprovalDetail(int Id, WorkPendingApprovalDetailViewModel model)
         {
@@ -329,7 +330,6 @@ namespace CrmApp.Controllers
 
             ViewData["AppUserId"] = new SelectList(bilgiIslemKullanicilari.OrderBy(x => x.NameSurName), "Id", "NameSurName");
 
-
             var worksDetails = await _context.Works.Where(x => x.Id == Id).FirstOrDefaultAsync();
             var user = await _context.Users.Where(x => x.Id == worksDetails.AppUserId).FirstOrDefaultAsync();
             var assetFault = await _context.AssetFaults.Where(x => x.Id == worksDetails.AssetFaultId).FirstOrDefaultAsync();
@@ -337,17 +337,19 @@ namespace CrmApp.Controllers
 
             if (worksDetails != null)
             {
-                worksDetails.Status = "onaylandı";
+                worksDetails.Status = model.OnaylaReddet;
                 worksDetails.AppUserId = model.AppUserId;
                 worksDetails.ApprovedNote = model.ApprovedNote;
+                worksDetails.Update = DateTime.Now;
                 await _context.SaveChangesAsync();
             }
 
             return RedirectToAction(nameof(WorkController.WorkPendingApprovalList));
         }
 
-        [Authorize]
 
+
+        [Authorize]
         public async Task<IActionResult> WorkDetail(int Id)
         {
             var worksDetails = await _context.Works.Where(x => x.Id == Id).FirstOrDefaultAsync();
@@ -375,9 +377,54 @@ namespace CrmApp.Controllers
             };
             return View(details);
         }
+        [HttpPost]
+        public async Task<IActionResult> WorkDetail(int id, WorkStatusFinishedViewModel model)
+        {
+            var worksDetails = await _context.Works.Where(x => x.Id == id).FirstOrDefaultAsync();
+            var user = await _context.Users.Where(x => x.Id == worksDetails.AppUserId).FirstOrDefaultAsync();
+            var category = await _context.AssetFaults.Where(x => x.Id == worksDetails.AssetFaultId).FirstOrDefaultAsync();
+
+
+            var details = new WorkDetailViewModel()
+            {
+                Id = worksDetails.Id,
+                Title = worksDetails.Title,
+                Description = worksDetails.Description,
+                WhoIsCreate = worksDetails.WhoIsCreate,
+                Status = worksDetails.Status,
+                Create = worksDetails.Create,
+                Update = worksDetails.Update,
+                DeadLine = worksDetails.DeadLine,
+                Finished = worksDetails.Finished,
+                AppUser = user.UserName,
+                AssetFault = category.Name,
+                WorkOrderNumber = worksDetails.WorkOrderNumber,
+                ApprovedNote = worksDetails.ApprovedNote,
+                FinishedDescription = worksDetails.FinishedDescription
+
+            };
+
+
+            if (!ModelState.IsValid)
+            {
+                return View(details);
+            }
+            var work = await _context.Works.FindAsync(id);
+
+            if (work != null)
+            {
+                work.FinishedDescription = model.FinishedDescription;
+                work.Status = "bitti";
+                work.Update = DateTime.Now;
+                work.Finished = DateTime.Now;
+
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction(nameof(WorkController.MyWorks));
+        }
 
         [Authorize]
-
         public async Task<IActionResult> MyWorks()
         {
             var worksList = await _context.Works.ToListAsync();
@@ -400,7 +447,6 @@ namespace CrmApp.Controllers
         }
 
         [Authorize]
-
         [HttpPost]
         public async Task<IActionResult> WorksStatusStarted(int id)
         {
@@ -409,6 +455,7 @@ namespace CrmApp.Controllers
             if (work != null)
             {
                 work.Status = "başlandı";
+                work.Update = DateTime.Now;
 
                 await _context.SaveChangesAsync();
             }
@@ -416,34 +463,37 @@ namespace CrmApp.Controllers
             return RedirectToAction(nameof(WorkController.MyWorks));
         }
 
+        //[Authorize]
+
+        //public async Task<IActionResult> WorkStatusFinished()
+        //{
+
+        //    return View();
+        //}
+
+        //[Authorize]
+
+        //[HttpPost]
+        //public async Task<IActionResult> WorkStatusFinished(int id, WorkStatusFinishedViewModel model)
+        //{
+
+        //    var work = await _context.Works.FindAsync(id);
+
+        //    if (work != null)
+        //    {
+        //        work.FinishedDescription = model.FinishedDescription;
+        //        work.Status = "bitti";
+        //        work.Update = DateTime.Now;
+        //        work.Finished = DateTime.Now;
+
+        //        await _context.SaveChangesAsync();
+        //    }
+
+        //    return RedirectToAction(nameof(WorkController.MyWorks));
+        //}
+
+
         [Authorize]
-
-        public async Task<IActionResult> WorkStatusFinished()
-        {
-            return View();
-        }
-
-        [Authorize]
-
-        [HttpPost]
-        public async Task<IActionResult> WorkStatusFinished(int id, WorkStatusFinishedViewModel model)
-        {
-            var work = await _context.Works.FindAsync(id);
-
-            if (work != null)
-            {
-                work.FinishedDescription = model.FinishedDescription;
-                work.Status = "bitti";
-
-                await _context.SaveChangesAsync();
-            }
-
-            return RedirectToAction(nameof(WorkController.MyWorks));
-        }
-
-
-        [Authorize]
-
         public async Task<IActionResult> MyOpenedWorks()
         {
             var worksList = await _context.Works.ToListAsync();
@@ -465,13 +515,14 @@ namespace CrmApp.Controllers
             return View(worksListViewModel);
         }
 
+        [Authorize]
         public async Task<IActionResult> MyDepartmentOpenedWorks()
         {
             var worksList = await _context.Works.ToListAsync();
 
             var userControl = await _UserManager.FindByNameAsync(User.Identity.Name);
 
-            var worksListViewModel = worksList.Where(x => x.WhoIsCreate == userControl.NameSurName).Select(x => new MyWorksViewModel()
+            var worksListViewModel = worksList.Where(x => x.WorkOpenDepartmanId == userControl.DepartmentId).Select(x => new MyWorksViewModel()
             {
                 Id = x.Id,
                 Title = x.Title,
@@ -485,6 +536,8 @@ namespace CrmApp.Controllers
             }).OrderByDescending(x => x.Id).ToList();
             return View(worksListViewModel);
         }
+
+        [Authorize]
         public async Task<IActionResult> MyDepartmentWorks()
         {
             var worksList = await _context.Works.ToListAsync();

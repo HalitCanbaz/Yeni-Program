@@ -30,7 +30,7 @@ namespace CrmApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AssetCategoryCreate(AssetCategoryCreateViewModel  model)
+        public async Task<IActionResult> AssetCategoryCreate(AssetCategoryCreateViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -60,11 +60,47 @@ namespace CrmApp.Controllers
             var result = _context.AssetCategories.ToList();
             var listOfAssetCategory = result.Select(x => new AssetCategoryListViewModel()
             {
+                Id= x.Id,   
                 Code = x.Code,
                 Name = x.Name,
                 Description = x.Description
-            }).OrderBy(x=> x.Name).ToList();
+            }).OrderBy(x => x.Name).ToList();
             return View(listOfAssetCategory);
         }
+
+        public IActionResult AssetCategoryEdit(int Id)
+        {
+            var result = _context.AssetCategories.Where(x => x.Id == Id).FirstOrDefault();
+
+            var assetCategory = new AssetCategoryEditViewModel
+            {
+                Id = result.Id,
+                Code = result.Code,
+                Name = result.Name,
+                Description = result.Description
+            };
+
+
+            return View(assetCategory);
+        }
+
+
+        [HttpPost]
+        public IActionResult AssetCategoryEdit(int Id, AssetCategoryEditViewModel model)
+        {
+
+            var result = _context.AssetCategories.Where(x => x.Id == Id).FirstOrDefault();
+
+            if (result!=null)
+            {
+                result.Code= model.Code;
+                result.Name = model.Name.ToUpper();
+                result.Description = model.Description;
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction(nameof(AssetCategoryList));
+        }
+
     }
 }

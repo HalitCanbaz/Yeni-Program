@@ -31,6 +31,9 @@
                                 <td>@item.Code</td>
                                 <td>@item.Name</td>
                                 <td>@item.Description</td>
+                                <td>
+                                    <a class="btn btn-secondary" asp-action="AssetCategoryEdit" asp-route-id="@item.Id">Düzelt</a>
+                                </td>
                             </tr>
                         }
                     </tbody>

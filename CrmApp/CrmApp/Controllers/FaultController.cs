@@ -44,9 +44,6 @@ namespace CrmApp.Controllers
                 return View();
             }
 
-
-
-
             Fault fault = new Fault()
             {
                 Code = model.Code,
@@ -56,7 +53,7 @@ namespace CrmApp.Controllers
 
             await _context.AddAsync(fault);
             await _context.SaveChangesAsync();
-            return View();
+            return RedirectToAction(nameof(FaultList));
         }
 
         public IActionResult FaultList()
@@ -64,6 +61,7 @@ namespace CrmApp.Controllers
             var result = _context.Faults.ToList();
             var listOfFault = result.Select(x => new FaultListViewModel()
             {
+                Id= x.Id,   
                 Code = x.Code,
                 Name = x.Name,
                 Description = x.Description

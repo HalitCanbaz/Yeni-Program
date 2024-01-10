@@ -27,6 +27,8 @@
                             <th>Varlık Tipi</th>
                             <th>Açıklama</th>
                             <th>Arıza Ata</th>
+                            <th>Varlık Arızaları</th>
+                            <th>Varlık Düzelt</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,12 +43,14 @@
                                 <td>@item.AssetTypneName</td>
                                 <td>@item.Description</td>
                                 <td>
+                                    <a class="btn btn-success" asp-controller="Asset" asp-action="AssetEdit" asp-route-id="@item.Id">Düzelt</a>
+                                </td>
+                                <td>
                                     <a class="btn btn-secondary" asp-controller="AssetFault" asp-action="AssetFaultCreate" asp-route-id="@item.Id">Arıza Ata</a>
                                 </td>
                                 <td>
                                     <a class="btn btn-danger" asp-controller="AssetFault" asp-action="AssetFaultList" asp-route-id="@item.Id">Varlığın Arızaları</a>
                                 </td>
-
                             </tr>
                         }
                     </tbody>
